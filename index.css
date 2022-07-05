@@ -1,0 +1,118 @@
+* {
+    box-sizing: border-box;
+}    
+
+body {
+    margin: 0;
+    background: no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: white;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-shadow: 0px 0px 20px #242424;
+}
+
+main {
+    padding: 15px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    height: 10vh;
+}
+
+.time {
+    text-align: center;
+    font-size: 10rem;
+    font-weight: 700;
+    padding-top: 60px;
+}
+
+h2 {
+    font-size: 3rem;
+    font-family: garamond, serif;
+    margin-top: -30px;
+}
+
+.quote {
+    text-align: center;
+    height: 30px;
+}
+
+.bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 10vh;
+}
+
+.image--details {
+    font-weight: bold;
+}
+
+.author, .location {
+    display: flex;
+    align-items: flex-end;
+}
+
+.author {
+    margin-bottom: -10px;
+}
+
+.author span, .location span {
+    font-weight: normal;
+}
+
+.author p, .links p, .todolist p {
+    margin: 0;
+    padding: 0;
+}
+
+.links a, .todolist a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+p#location, p#author {
+    margin-bottom: 0;
+}
+
+div#weather {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-self: flex-start;
+    margin-top: -20px;
+}
+
+div#weather > img {
+    width: 70px;
+}
+
+p.weather-city {
+    width: 100%;
+    text-align: right;
+    margin: 0;
+    margin-top: -10px;
+    font-size: 1rem;
+}
+
+p.weather-temp {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-left: -10px;
+}
+
+p#author {
+    font-size: 1rem;
+}
