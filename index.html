@@ -1,23 +1,30 @@
-<html>
+<!DOCTYPE html>
     <head>
         <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="index.css">
         <title>Personal Dashboard</title>
     </head>
-    <body>
+    <body id="body">
         <main>    
             <div class="top">
-                <div class="todolist">
-                    <a href="">Todo</a>
+                <div>
+                    <a class="todolist" href="" target="_blank">Todo</a>
                 </div>
-                <div id="weather"></div>
+                <div id="weather">
+                </div>
             </div>
             <h1 id="time" class="time"></h1>
             <div class="quote">
-                <h2>Quote of the day!</h2>
+                <h2 id="quote"></h2>
+                <p id="quote--author"></p>
             </div>
             <div class="bottom">
                 <div class="image--details">
+                    <img id="imagesettings" src="images/settingbutton.svg" alt="">
                     <div class="author">
                         <span>By:&nbsp</span><p id="author"></p>
                     </div>
@@ -26,10 +33,19 @@
                     </div>
                 </div>
                 <div class="links">
-                    <a href="">Links</a>
+                    <p class="homelink" id="homelink">Links</p>
+                    <div id="links" class="links-links">
+                        <img id="closebtn" class="closebutton" src="images/closebutton.svg" alt="" width="25px">
+                        <ul>
+                            <li class="list--item"><a href="https://www.gmail.com" target="_blank">Gmail</a></li>
+                            <li class="list--item"><a href="https://mail.yahoo.com" target="_blank">Yahoo Mail</a></li>
+                            <li class="list--item"><a href="https://www.thesaurus.com" target="_blank">Thesaurus</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </main>
         <script src="index.js"></script>
     </body>
 </html>
+

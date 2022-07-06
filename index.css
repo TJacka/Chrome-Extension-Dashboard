@@ -10,8 +10,8 @@ body {
     -o-background-size: cover;
     background-size: cover;
     color: white;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    text-shadow: 0px 0px 20px #242424;
+    font-family: 'Montserrat', sans-serif;
+    text-shadow: 1px 1px 2px rgb(51, 51, 51), 0px 0px 5px #565656;
 }
 
 main {
@@ -30,20 +30,34 @@ main {
 
 .time {
     text-align: center;
-    font-size: 10rem;
-    font-weight: 700;
-    padding-top: 60px;
+    font-size: 12rem;
+    font-weight: 800;
+    padding-top: 40px;
 }
 
 h2 {
-    font-size: 3rem;
+    font-size: 2rem;
     font-family: garamond, serif;
-    margin-top: -30px;
+    line-height: 1.5;
 }
 
 .quote {
     text-align: center;
-    height: 30px;
+    height: 40px;
+    margin-top: -100px;
+}
+
+#quote--author {
+    text-align: right;
+    margin-right: 20vw;
+    font-family: garamond, serif;
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+#quote {
+    max-width: 50vw;
+    margin: 0 auto;
 }
 
 .bottom {
@@ -60,6 +74,7 @@ h2 {
 .author, .location {
     display: flex;
     align-items: flex-end;
+    font-size: 0.8rem;
 }
 
 .author {
@@ -75,10 +90,10 @@ h2 {
     padding: 0;
 }
 
-.links a, .todolist a {
-    color: white;
+.links a, .todolist {
     text-decoration: none;
-    font-size: 1.2rem;
+    color: white;
+    text-shadow: 1px 1px 2px rgb(51, 51, 51), 0px 0px 5px #565656;
 }
 
 p#location, p#author {
@@ -103,16 +118,99 @@ p.weather-city {
     text-align: right;
     margin: 0;
     margin-top: -10px;
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 
 p.weather-temp {
     margin: 0;
     font-size: 2rem;
     font-weight: bold;
-    margin-left: -10px;
+    margin-left: 0px;
 }
 
-p#author {
-    font-size: 1rem;
+#links {
+    width: 175px;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    right: 10px;
+    bottom: 50px;
+    border-radius: 15px;
+    text-align: right;
+    padding-right: 10px;
+    color: white;
+    display: none;
+    flex-direction: column;
+    text-shadow: 1px 1px 2px rgb(51, 51, 51), 0px 0px 5px #565656;
+}
+
+.links--links {
+    list-style-type: none;
+    opacity: 1;
+}
+
+.links--links img {
+    padding-right: 20px;
+}
+
+.closebutton {
+    margin: 15px -10px 0 15px;
+    cursor: pointer;
+}
+
+ul {
+    list-style-type: none;
+    margin-top: 0;
+}
+
+li {
+    padding: 8px;
+}
+
+li.list--item {
+    text-shadow: none;
+    font-weight: bold;
+    color: white;
+}
+
+li a:hover {
+    color: rgb(247, 207, 4);
+    z-index: 10;
+    cursor: pointer;
+}
+
+.homelink, .todolist {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.homelink:hover, .todolist:hover {
+    cursor: pointer;
+    color: rgb(247, 207, 4);
+}
+
+#imagesettings {
+    cursor: pointer;
+    height: 15px;
+    margin-bottom: 3px;
+}
+
+@media (max-width: 1280px) {
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    .time {
+        text-align: center;
+        font-size: 9rem;
+        font-weight: 800;
+        padding-top: 30px;
+    }
+
+    #quote--author {
+        font-size: 1rem;
+    }
+
+    .quote {
+        margin-top: -60px;
+    }
 }
