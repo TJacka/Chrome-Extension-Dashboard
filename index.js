@@ -1,7 +1,35 @@
 const links = document.getElementById("links")
+const todos = document.getElementById("todoitems")
+
+document.getElementById("todosubmit").addEventListener("click", addTodo)
 document.getElementById("closebtn").addEventListener("click", () => links.style.display = "none")
 document.getElementById("homelink").addEventListener("click", () => links.style.display = "flex")
+document.getElementById("todolist").addEventListener("click", () => todos.style.display = "flex")
+document.getElementById("closetodos").addEventListener("click", () => todos.style.display = "none")
+document.getElementById("todosubmit").addEventListener("click", () => addTodo)
 document.getElementById("imagesettings").addEventListener("click", () => getBackgroundImage())
+// document.getElementByClass("closetodo").addEventListener("click", () => closeTodo)
+
+function addTodo() { 
+    const inputText = document.getElementById('todosinput').value
+    const listNode = document.getElementById('todolistitems')
+    const liNode = document.createElement("div")
+    const li = document.createElement("li")
+    const liImg = document.createElement("img")
+    const textNode = document.createTextNode(inputText)
+    liImg.src = "images/closetodobutton.svg"
+    liImg.style.width = "20px"
+    liImg.setAttribute("class", "closetodo")
+    listNode.appendChild(liNode)
+    liNode.appendChild(li)
+    liNode.appendChild(liImg)
+    li.appendChild(textNode)
+    
+}
+
+// function closeTodo() {
+//     document.querySelectorAll(".closetodo").parentElement.remove()
+// }
 
 // Fetching background image and details
 function getBackgroundImage() {
@@ -58,7 +86,7 @@ fetch(`https://type.fit/api/quotes`)
     .then(res => res.json())
     .then(data => {
         document.getElementById("quote").textContent = `"${data[quoteNum].text}"`
-        document.getElementById("quote--author").textContent = `${data[quoteNum].author}`
+        document.getElementById("quote--author").textContent = `-${data[quoteNum].author}`
     })
     .catch(err => {
 		document.getElementById("quote").textContent = `"Knowing is not enough; we must apply. Willing is not enough; we must do."`
@@ -78,3 +106,5 @@ fetch(`https://www.wordreference.com/licensing/dictionary_api.htm`)
         document.getElementById("quote").textContent = `"Knowing is not enough; we must apply. Willing is not enough; we must do."`
         document.getElementById("quote--author").textContent = `Johann Wolfgang von Goethe`
     })
+
+    

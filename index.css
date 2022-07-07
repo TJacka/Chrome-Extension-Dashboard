@@ -10,7 +10,7 @@ body {
     -o-background-size: cover;
     background-size: cover;
     color: white;
-    font-family: 'Montserrat', sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-shadow: 1px 1px 2px rgb(51, 51, 51), 0px 0px 5px #565656;
 }
 
@@ -31,13 +31,13 @@ main {
 .time {
     text-align: center;
     font-size: 12rem;
-    font-weight: 800;
+    font-weight: 600;
     padding-top: 40px;
 }
 
 h2 {
     font-size: 2rem;
-    font-family: garamond, serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     line-height: 1.5;
 }
 
@@ -48,10 +48,9 @@ h2 {
 }
 
 #quote--author {
-    text-align: right;
-    margin-right: 20vw;
-    font-family: garamond, serif;
-    font-weight: bold;
+    text-align: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
     font-size: 1.4rem;
 }
 
@@ -88,6 +87,14 @@ h2 {
 .author p, .links p, .todolist p {
     margin: 0;
     padding: 0;
+}
+
+p.todolist {
+    margin-top: 0px;
+}
+
+.td, .weather {
+    width: 200px;
 }
 
 .links a, .todolist {
@@ -143,6 +150,100 @@ p.weather-temp {
     text-shadow: 1px 1px 2px rgb(51, 51, 51), 0px 0px 5px #565656;
 }
 
+.todos {
+    margin-bottom: 7px;
+}
+
+.todoitems {
+    width: 300px;
+    background-color: rgba(255, 255, 255, 0.8);
+    position: absolute;
+    left: 10px;
+    top: 50px;
+    border-radius: 15px;
+    text-align: left;
+    padding-left: 10px;
+    color: white;
+    display: none;
+    flex-direction: column;
+    text-shadow: 1px 1px 2px rgb(51, 51, 51), 0px 0px 5px #565656;
+    box-shadow: 0px 0px 10px rgb(66, 66, 66);
+}
+
+.todosform {
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    margin: 10px 0;
+}
+
+.todosform input {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: rgba(255, 255, 255, 0.748);
+    border-radius: 7px;
+    outline: none;
+    border: none;
+    box-shadow: 0px 4px 10px -10px black;
+    width: 280px;
+    font-size: 1rem;
+    color: black;
+    font-weight: 700;
+}
+
+.todosform input::placeholder {
+    font-size: 1rem;
+}
+
+.todosform input:focus {
+    box-shadow: 0px 8px 10px -10px black;
+}
+
+.todosubmit {
+    padding: 8px 12px;
+    width: fit-content;
+    border-radius: 5px;
+    background-color: #535353;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: 0 auto;
+    box-shadow: 0px 4px 10px -10px black;
+    cursor: pointer;
+}
+
+.todosubmit:hover {
+    background-color: #8c8b8b;
+}
+
+.todostop {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: space-between;
+}
+
+.todoslabel {
+    margin: 1px 2px 5px 3px;
+    padding: 2px 0;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    text-shadow: none;
+}
+
+img.closetodos {
+    height: 20px;
+    width: 20px;
+    margin: -10px 2px 0 0;
+}
+
+img.closetodos {
+    cursor: pointer;
+}
+
 .links--links {
     list-style-type: none;
     opacity: 1;
@@ -150,6 +251,10 @@ p.weather-temp {
 
 .links--links img {
     padding-right: 20px;
+}
+
+.todos li {
+    color: black;
 }
 
 .closebutton {
@@ -160,10 +265,26 @@ p.weather-temp {
 ul {
     list-style-type: none;
     margin-top: 0;
+    display: block;
+}
+
+ul div {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 5px;
+}
+
+ul div img {
+    margin-right: 10px;
+    cursor: pointer;
 }
 
 li {
-    padding: 8px;
+    padding: 8px 0;
+    margin-left: -30px;
+    margin-right: 10px;
+    color: black;
+    text-shadow: none;
 }
 
 li.list--item {
@@ -193,6 +314,110 @@ li a:hover {
     height: 15px;
     margin-bottom: 3px;
 }
+
+/* ************** CALCULATOR ************** */
+
+.calculator {
+    height: 260px;
+    width: 440px;
+    display: none;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 12px;
+    padding: 9px 5px 10px 5px;
+    margin-top: 20px;
+    box-shadow: 1px 1px 15px rgb(87, 87, 87);;
+}
+
+.calc {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.calc img {
+    cursor: pointer;
+    margin-top: 0px;
+}
+
+.calc--inner {
+    height: 240px;
+    width: 430px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.calc--inner--top {
+    height: 80px;
+    border: 1px solid black;
+    width: 416px;
+    border-radius: 8px;
+    margin-top: 3px;
+    background-color: rgba(255, 255, 255, 0.85);
+    box-shadow: inset 1px 1px 3px rgb(87, 87, 87);;
+}
+
+.calc--inner--bottom {
+    height: 300px;
+    width: 420px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 5px;
+}
+
+.calc--inner--bottom > div {
+    border: 1px solid black;
+    width: 80px;
+    height: 40px;
+    border-radius: 8px;
+    margin: 2px;
+    background-color: rgba(224, 224, 224, 0.85);
+    box-shadow: 1px 1px 2px rgb(87, 87, 87);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(51, 51, 51);
+    text-shadow: none;
+    font-size: 1.5rem;
+    font-weight: 900;
+}
+
+.calc--inner--bottom > div:hover {
+    background-color: rgb(255, 255, 255);
+    color: black;
+    cursor: pointer;
+}
+
+.calc--inner--bottom > div:active {
+    box-shadow: none;
+    border: 1px solid rgb(74, 74, 74);
+}
+
+div.stretch {
+    width: 164px;
+}
+
+div.special {
+    background: rgba(250, 197, 99, 0.7);
+}
+
+div.special:hover {
+    background: rgba(242, 183, 74, 0.9);
+}
+
+div.leftspecial {
+    background-color: rgba(249, 127, 93, 0.6);
+}
+
+div.leftspecial:hover {
+    background-color: rgb(214, 129, 110);
+}
+
+/* ************** MEDIA QUERIES ************** */
 
 @media (max-width: 1280px) {
     h2 {
