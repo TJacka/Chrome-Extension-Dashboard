@@ -6,30 +6,30 @@ document.getElementById("closebtn").addEventListener("click", () => links.style.
 document.getElementById("homelink").addEventListener("click", () => links.style.display = "flex")
 document.getElementById("todolist").addEventListener("click", () => todos.style.display = "flex")
 document.getElementById("closetodos").addEventListener("click", () => todos.style.display = "none")
-document.getElementById("todosubmit").addEventListener("click", () => addTodo)
 document.getElementById("imagesettings").addEventListener("click", () => getBackgroundImage())
-// document.getElementByClass("closetodo").addEventListener("click", () => closeTodo)
 
-function addTodo() { 
+function addTodo() {
     const inputText = document.getElementById('todosinput').value
     const listNode = document.getElementById('todolistitems')
     const liNode = document.createElement("div")
     const li = document.createElement("li")
     const liImg = document.createElement("img")
     const textNode = document.createTextNode(inputText)
+    const close = document.getElementsByClassName("closetodo")
     liImg.src = "images/closetodobutton.svg"
     liImg.style.width = "20px"
-    liImg.setAttribute("class", "closetodo")
+    liImg.className = "closetodo"
     listNode.appendChild(liNode)
     liNode.appendChild(li)
     liNode.appendChild(liImg)
     li.appendChild(textNode)
-    
+    for (let i = 0; i < close.length; i++) {
+        close[i].onclick = () => {
+            console.log("clicked")
+            close[i].parentElement.style.display = "none"
+            } 
+    }
 }
-
-// function closeTodo() {
-//     document.querySelectorAll(".closetodo").parentElement.remove()
-// }
 
 // Fetching background image and details
 function getBackgroundImage() {
@@ -59,7 +59,7 @@ setInterval(getCurrentTime, 1000)
 navigator.geolocation.getCurrentPosition(position => {
     let latitude = position.coords.latitude
     let longitude = position.coords.longitude
-    
+
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude.toFixed(2)}&lon=${longitude.toFixed(2)}&units=imperial&appid=80c02431694c667ce0c628484bfb0bdb`)
         .then(res => {
             if (!res.ok) {
@@ -69,7 +69,7 @@ navigator.geolocation.getCurrentPosition(position => {
         })
         .then(data => {
             const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
-            document.getElementById("weather").innerHTML = `    
+            document.getElementById("weather").innerHTML = `
                 <img src=${iconUrl} />
                 <p class="weather-temp">${Math.round(data.main.temp)}º</p>
                 <p class="weather-city">${data.name}</p>
@@ -92,19 +92,3 @@ fetch(`https://type.fit/api/quotes`)
 		document.getElementById("quote").textContent = `"Knowing is not enough; we must apply. Willing is not enough; we must do."`
         document.getElementById("quote--author").textContent = `Johann Wolfgang von Goethe`
     })
-
-// Fetching quote of the day
-
-fetch(`https://www.wordreference.com/licensing/dictionary_api.htm`)
-    .then(res => res.json())
-    .then(data => {
-        console.log(data)
-        document.getElementById("quote").textContent = `"${data[quoteNum].text}"`
-        document.getElementById("quote--author").textContent = `${data[quoteNum].author}`
-    })
-    .catch(err => {
-        document.getElementById("quote").textContent = `"Knowing is not enough; we must apply. Willing is not enough; we must do."`
-        document.getElementById("quote--author").textContent = `Johann Wolfgang von Goethe`
-    })
-
-    

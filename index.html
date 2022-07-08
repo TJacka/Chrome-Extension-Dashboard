@@ -10,7 +10,7 @@
     </head>
     <body id="body">
         <main>    
-            <div class="top">
+            <section class="top">
                 <div class="td">
                     <p class="todolist" id="todolist">Todo</p>
                     <div class="todoitems" id="todoitems">
@@ -20,7 +20,7 @@
                                     <label class="todoslabel" for="">My Todo List</label>
                                     <img id="closetodos" class="closetodos" src="images/closebutton.svg" alt="" width="25px">
                                 </div>
-                                <input id="todosinput" onfocus="this.value=''" placeholder="Enter todo" type="text">
+                                <input id="todosinput" placeholder="Enter todo" type="text">
                             </div>
                             <p class="todosubmit" id="todosubmit">Add Todo</p>
                         </form>
@@ -28,44 +28,16 @@
                         </ul>
                     </div>
                 </div>
-                <div class="calc">
-                    <img id="calcbtn" src="images/calcbtn.svg" alt="" width="40px">
-                    <div class="calculator" id="calculator">
-                        <div class="calc--inner">
-                            <div class="calc--inner--top" id="calc--answer"></div>
-                            <div class="calc--inner--bottom">
-                                <div id="ac" class="ac leftspecial"></div>
-                                <div id="seven" class="seven" value="7"></div>
-                                <div id="eight" class="eight"></div>
-                                <div id="nine" class="nine"></div>
-                                <div id="divide" class="divide special"></div>
-                                <div id="posneg" class="posneg leftspecial"></div>
-                                <div id="four" class="four"></div>
-                                <div id="five" class="five"></div>
-                                <div id="six" class="six"></div>
-                                <div id="multiply" class="multiply special"></div>
-                                <div id="percent" class="percentage leftspecial"></div>
-                                <div id="one" class="one"></div>
-                                <div id="two" class="two"></div>
-                                <div id="three" class="three"></div>
-                                <div id="minus" class="minus special"></div>
-                                <div id="point" class="point leftspecial"></div>
-                                <div id="zero" class="zero"></div>
-                                <div id="equals" class="equals special stretch"></div>
-                                <div id="plus" class="plus special"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
                 <div class="weather" id="weather">
                 </div>
-            </div>
+            </section>
             <h1 id="time" class="time"></h1>
             <div class="quote">
                 <h2 id="quote"></h2>
                 <p id="quote--author"></p>
             </div>
-            <div class="bottom">
+            <section class="bottom">
                 <div class="image--details">
                     <img id="imagesettings" src="images/settingbutton.svg" alt="">
                     <div class="author">
@@ -89,7 +61,6 @@
             </div>
         </main>
         <script src="index.js"></script>
-        <script src="calculator.js"></script>
     </body>
 </html>
 
