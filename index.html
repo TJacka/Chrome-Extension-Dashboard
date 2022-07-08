@@ -11,8 +11,28 @@
     <body id="body">
         <main>    
             <section class="top">
+                <div class="photodeets">
+                    <img id="imagesettings" src="images/settingbutton.svg" alt="">
+                    <div class="image--details">
+                        <div class="location">
+                            <span>Location:&nbsp</span><p id="location"></p>
+                        </div>
+                        <div class="photographer">
+                            <span>By:&nbsp</span><p id="photographer"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="weather" id="weather">
+                </div>
+            </section>
+            <h1 id="time" class="time"></h1>
+            <div class="quote">
+                <h2 id="quote"></h2>
+                <p id="quote--author"></p>
+            </div>
+            <section class="bottom">
                 <div class="td">
-                    <p class="todolist" id="todolist">Todo</p>
+                    <p class="todolist" id="todolist">Todos</p>
                     <div class="todoitems" id="todoitems">
                         <form class="todosform">
                             <div class="todostop">
@@ -32,24 +52,6 @@
                     </div>
                 </div>
                 
-                <div class="weather" id="weather">
-                </div>
-            </section>
-            <h1 id="time" class="time"></h1>
-            <div class="quote">
-                <h2 id="quote"></h2>
-                <p id="quote--author"></p>
-            </div>
-            <section class="bottom">
-                <div class="image--details">
-                    <img id="imagesettings" src="images/settingbutton.svg" alt="">
-                    <div class="author">
-                        <span>By:&nbsp</span><p id="author"></p>
-                    </div>
-                    <div class="location">
-                        <span>Location:&nbsp</span><p id="location"></p>
-                    </div>
-                </div>
                 <div class="llist">
                     <p class="linkslist" id="linkslist">Links</p>
                     <div class="links" id="links">
@@ -61,25 +63,15 @@
                                 </div>
                                 <input id="linksinput" class="linksinput " placeholder="Enter link" type="text">
                             </div>
-                            <div class="todobtns">
+                            <div class="linkbtns">
                                 <p class="todosubmit" id="linksubmit">Add Link</p>
-                                <p class="todoclear" id="linkclear">Clear All</p>
+                                <p class="todoclear" id="linksclear">Clear All</p>
                             </div>
                             </form>
                         <ul id="linkListItems" class="linksul">
                         </ul>
                     </div>
                 </div>
-                <!-- OLD LINKS -->
-                <!-- <div class="links">
-                    <p class="homelink" id="homelink">Links</p>
-                    <div id="links" class="links-links">
-                        <img id="closebtn" class="closebutton" src="images/closebutton.svg" alt="" width="25px">
-                        <ul>
-                            
-                        </ul>
-                    </div>
-                </div> -->
             </div>
         </main>
         <script src="index.js"></script>

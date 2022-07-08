@@ -1,6 +1,7 @@
 const links = document.getElementById("links")
 const todos = document.getElementById("todoitems")
 const close = document.getElementsByClassName('closetodo')
+const closelink = document.getElementsByClassName('closelink')
 
 // Change background image
 
@@ -12,7 +13,7 @@ document.getElementById("imagesettings").addEventListener("click", () => getBack
 document.getElementById("todosubmit").addEventListener("click", addTodo)
 document.getElementById("todolist").addEventListener("click", () => todos.style.display = "flex")
 document.getElementById("closetodos").addEventListener("click", () => todos.style.display = "none")
-document.getElementById("todoclear").addEventListener("click", removeAllChildNodes)
+document.getElementById("todoclear").addEventListener("click", removeAllChildNodesTodos)
 
 function addTodo() {
     if (document.getElementById("todosinput").value === "") {
@@ -28,7 +29,6 @@ function addTodo() {
     const close = document.getElementsByClassName("closetodo")
     liImg.src = "images/closetodobutton.svg"
     liImg.style.width = "20px"
-    liImg.style.height = "35px"
     liImg.className = "closetodo"
     listNode.appendChild(liNode)
     liNode.appendChild(li)
@@ -42,7 +42,7 @@ function addTodo() {
     document.getElementById("todosinput").value = "";   
 }
 
-function removeAllChildNodes() {
+function removeAllChildNodesTodos() {
     for (let i = 0; i < close.length; i++) {
         close[i].parentElement.style.display = "none"
     }
@@ -61,39 +61,38 @@ list.addEventListener('click', function(e) {
 document.getElementById("closelinks").addEventListener("click", () => links.style.display = "none")
 document.getElementById("linkslist").addEventListener("click", () => links.style.display = "flex")
 document.getElementById("linksubmit").addEventListener("click", addLink)
-document.getElementById("todoclear").addEventListener("click", removeAllChildNodes)
+document.getElementById("linksclear").addEventListener("click", removeAllChildNodesLinks)
 
 function addLink() {
-    if (document.getElementById("todosinput").value === "") {
-        alert("Please enter a todo item")
+    if (document.getElementById("linksinput").value === "") {
+        alert("Please enter a link")
         return
     }
-    const inputText = document.getElementById('todosinput').value
-    const listNode = document.getElementById('todoListItems')
+    const inputText = document.getElementById('linksinput').value
+    const listNode = document.getElementById('linkListItems')
     const liNode = document.createElement("div")
     const li = document.createElement("li")
     const liImg = document.createElement("img")
     const textNode = document.createTextNode(inputText)
-    const close = document.getElementsByClassName("closetodo")
+    const closelink = document.getElementsByClassName("closelink")
     liImg.src = "images/closetodobutton.svg"
     liImg.style.width = "20px"
-    liImg.style.height = "35px"
-    liImg.className = "closetodo"
+    liImg.className = "closelink"
     listNode.appendChild(liNode)
     liNode.appendChild(li)
     liNode.appendChild(liImg)
     li.appendChild(textNode)
-    for (let i = 0; i < close.length; i++) {
-        close[i].onclick = () => {
-            close[i].parentElement.style.display = "none"
+    for (let i = 0; i < closelink.length; i++) {
+        closelink[i].onclick = () => {
+            closelink[i].parentElement.style.display = "none"
             } 
     }
-    document.getElementById("todosinput").value = "";   
+    document.getElementById("linksinput").value = "";   
 }
 
-function removeAllChildNodes() {
-    for (let i = 0; i < close.length; i++) {
-        close[i].parentElement.style.display = "none"
+function removeAllChildNodesLinks() {
+    for (let i = 0; i < closelink.length; i++) {
+        closelink[i].parentElement.style.display = "none"
     }
 }
 
@@ -105,9 +104,6 @@ listlinks.addEventListener('click', function(e) {
   }
 }, false);
 
-
-
-
 // Fetching background image and details
 
 function getBackgroundImage() {
@@ -116,7 +112,7 @@ function getBackgroundImage() {
     .then(data => {
         document.body.style.backgroundImage = `url(${data.urls.full})`
         document.getElementById("location").textContent = `${data.location.name}`
-        document.getElementById("author").textContent = `${data.user.name}`
+        document.getElementById("photographer").textContent = `${data.user.name}`
     })
     .catch(err => {
         document.body.style.backgroundImage = `url(https://images.unsplash.com/photo-1560008511-11c63416e52d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMTEwMjl8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjI4NDIxMTc&ixlib=rb-1.2.1&q=80&w=1080)`
