@@ -12,6 +12,7 @@ body {
     color: white;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-shadow: 1px 1px 2px rgb(51, 51, 51), 0px 0px 5px #565656;
+    font-size: 16px;
 }
 
 main {
@@ -179,14 +180,15 @@ p.weather-temp {
 }
 
 .todosform input {
-    padding: 10px;
-    margin-bottom: 10px;
-    background-color: rgba(255, 255, 255, 0.748);
+    padding: 13px 10px 11px;
+    margin: 1px 0 12px;
+    margin-left: 4px;
+    background-color: rgba(255, 255, 255, 0.9);
     border-radius: 7px;
     outline: none;
     border: none;
     box-shadow: 0px 4px 10px -10px black;
-    width: 280px;
+    width: 272px;
     font-size: 1rem;
     color: black;
     font-weight: 700;
@@ -198,24 +200,33 @@ p.weather-temp {
 
 .todosform input:focus {
     box-shadow: 0px 8px 10px -10px black;
+    font-size: 1rem;
 }
 
-.todosubmit {
-    padding: 8px 12px;
-    width: 150px;
+.todosubmit, .todoclear {
+    padding: 12px 14px;
+    width: 130px;
     text-align: center;
-    border-radius: 5px;
+    border-radius: 7px;
     background-color: #535353;
     border: none;
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 600;
     margin: 6px auto 0;
     box-shadow: 0px 4px 10px -10px black;
     cursor: pointer;
 }
 
+.todobtns {
+    display: flex;
+}
+
 .todosubmit:hover {
     background-color: #8c8b8b;
+}
+
+.todoclear:hover {
+    background-color: #d60303;
 }
 
 .todostop {
@@ -240,7 +251,7 @@ p.weather-temp {
 img.closetodos {
     height: 20px;
     width: 20px;
-    margin: -10px 2px 0 0;
+    margin: -8px 2px 0 0;
 }
 
 img.closetodos {
@@ -282,12 +293,22 @@ ul div img {
     cursor: pointer;
 }
 
+ul li {
+    cursor: pointer;
+}
+
+ul li.checked {
+    color: rgb(188, 3, 3);
+    text-decoration: line-through;
+  }
+  
 li {
     padding: 8px 0;
     margin-left: -30px;
     margin-right: 10px;
     color: black;
     text-shadow: none;
+    font-size: 1rem;
 }
 
 li.list--item {
@@ -315,7 +336,7 @@ li a:hover {
 #imagesettings {
     cursor: pointer;
     height: 15px;
-    margin-bottom: 3px;
+    margin-bottom: 2px;
 }
 
 /* ************** MEDIA QUERIES ************** */

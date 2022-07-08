@@ -1,16 +1,22 @@
 const links = document.getElementById("links")
 const todos = document.getElementById("todoitems")
+const close = document.getElementsByClassName('closetodo')
 
-document.getElementById("todosubmit").addEventListener("click", addTodo)
+
 document.getElementById("closebtn").addEventListener("click", () => links.style.display = "none")
 document.getElementById("homelink").addEventListener("click", () => links.style.display = "flex")
 document.getElementById("todolist").addEventListener("click", () => todos.style.display = "flex")
 document.getElementById("closetodos").addEventListener("click", () => todos.style.display = "none")
 document.getElementById("imagesettings").addEventListener("click", () => getBackgroundImage())
+document.getElementById("todoclear").addEventListener("click", removeAllChildNodes)
 
 function addTodo() {
+    if (document.getElementById("todosinput").value === "") {
+        alert("Please enter a todo item")
+        return
+    }
     const inputText = document.getElementById('todosinput').value
-    const listNode = document.getElementById('todolistitems')
+    const listNode = document.getElementById('todoListItems')
     const liNode = document.createElement("div")
     const li = document.createElement("li")
     const liImg = document.createElement("img")
@@ -18,6 +24,7 @@ function addTodo() {
     const close = document.getElementsByClassName("closetodo")
     liImg.src = "images/closetodobutton.svg"
     liImg.style.width = "20px"
+    liImg.style.height = "35px"
     liImg.className = "closetodo"
     listNode.appendChild(liNode)
     liNode.appendChild(li)
@@ -25,11 +32,27 @@ function addTodo() {
     li.appendChild(textNode)
     for (let i = 0; i < close.length; i++) {
         close[i].onclick = () => {
-            console.log("clicked")
             close[i].parentElement.style.display = "none"
             } 
     }
+    document.getElementById("todosinput").value = "";   
 }
+
+document.getElementById("todosubmit").addEventListener("click", addTodo)
+
+function removeAllChildNodes() {
+    for (let i = 0; i < close.length; i++) {
+        close[i].parentElement.style.display = "none"
+    }
+}
+
+// Add a "checked" symbol when clicking on a list item
+const list = document.querySelector('ul');
+list.addEventListener('click', function(e) {
+  if (e.target.tagName === 'LI') {
+    e.target.classList.toggle('checked');
+  }
+}, false);
 
 // Fetching background image and details
 function getBackgroundImage() {
