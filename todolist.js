@@ -1,113 +1,120 @@
-// document.getElementById("todosubmit").addEventListener("click", newElement)
 
-// // Create a new list item when clicking on the "Add" button
-// function newElement() {
-//     const li = document.createElement("li")
-//     const inputValue = document.getElementById("todosinput").value;
-//     const t = document.createTextNode(inputValue)
-//     li.appendChild(t)
-//     if (inputValue === '') {
-//       alert("Enter a todo!")
-//     } else {
-//       document.getElementById("todoslistitems").appendChild(li);
-//     }
-//     document.getElementById("todosinput").value = ""
-  
-//     const span = document.createElement("SPAN")
-//     const txt = document.createTextNode("\u00D7")
-//     span.className = "close"
-//     span.appendChild(txt)
-//     li.appendChild(span)
-  
-//     for (i = 0; i < close.length; i++) {
-//       close[i].onclick = function() {
-//         const div = this.parentElement
-//         div.style.display = "none"
-//     }
-//   }
-// }
+// On app load, get all tasks from localStorage
+window.onload = loadTasks;
 
-// // Create a "close" button and append it to each list item
-// const myNodelist = document.getElementsByTagName("LI")
-// for (let i = 0; i < myNodelist.length; i++) {
-//   const span = document.createElement("SPAN")
-//   const txt = document.createTextNode("\u00D7")
-//   span.className = "close"
-//   span.appendChild(txt)
-//   myNodelist[i].appendChild(span)
-// }
+// On form submit add task
+document.querySelector("form").addEventListener("submit", e => {
+  e.preventDefault();
+  addTask();
+});
 
-// // Click on a close button to hide the current list item
-// const close = document.getElementsByClassName("close")
-// for (let i = 0; i < close.length; i++) {
-//   close[i].onclick = function() {
-//     const div = this.parentElement
-//     div.style.display = "none"
-//   }
-// }
+function loadTasks() {
+  // check if localStorage has any tasks
+  // if not then return
+  if (localStorage.getItem("tasks") == null) return;
 
-// // Add a "checked" symbol when clicking on a list item
-// const list = document.querySelector('ul')
-// list.addEventListener('click', function(e) {
-//   if (e.target.tagName === '') {
-//     e.target.classList.toggle('checked')
-//   }
-// }, false);
+  // Get the tasks from localStorage and convert it to an array
+  let tasks = Array.from(JSON.parse(localStorage.getItem("tasks")));
 
+  // Loop through the tasks and add them to the list
+  tasks.forEach(task => {
+    const list = document.querySelector("ul");
+    const li = document.createElement("li");
+    li.innerHTML = `<input type="checkbox" 
+                    onclick="taskComplete(this)" 
+                    class="check" 
+                    ${task.completed ? 'checked' : ''}>
+                    <input type="text" 
+                    value="${task.task}" 
+                    class="task ${task.completed ? 'completed' : ''}" 
+                    onfocus="getCurrentTask(this)" 
+                    onblur="editTask(this)">
+                    <img src="images/closetodobutton.svg" width="20px" onclick="removeTask(this)"></i>`;
+    list.insertBefore(li, list.children[0]);
+  });
+}
 
+function addTask() {
+  const task = document.querySelector("form input");
+  const list = document.querySelector("ul");
+  // return if task is empty
+  if (task.value === "") {
+    alert("Please enter a todo!");
+    return false;
+  }
+  // check is task already exist
+  if (document.querySelector(`input[value="${task.value}"]`)) {
+    alert("Todo already exists!");
+    return false;
+  }
 
-// const todos = document.getElementById("todoitems")
-// document.getElementById("closebtn").addEventListener("click", () => links.style.display = "none")
-// document.getElementById("homelink").addEventListener("click", () => links.style.display = "flex")
-// document.getElementById("todolist").addEventListener("click", () => todos.style.display = "flex")
-// document.getElementById("closetodos").addEventListener("click", () => todos.style.display = "none")
-// document.getElementById("todosubmit").addEventListener("click", () => addTodo)
-// // document.getElementByClass("closetodo").addEventListener("click", () => closeTodo)
+  // add task to local storage
+  localStorage.setItem("tasks", JSON.stringify([...JSON.parse(localStorage.getItem("tasks") || "[]"), { task: task.value, completed: false }]));
 
+  // create list item, add innerHTML and append to ul
+  const li = document.createElement("li");
+  li.innerHTML = `<p onclick="taskComplete(this)" class="checked"></p>
+  <input type="text" value="${task.value}" class="task" onfocus="getCurrentTask(this)" onblur="editTask(this)">
+  <i class="fa fa-trash" onclick="removeTask(this)"></i>`;
+  list.insertBefore(li, list.children[0]);
+  // clear input
+  task.value = "";
+}
 
-// // Create a new list item 
+function taskComplete(event) {
+  let tasks = Array.from(JSON.parse(localStorage.getItem("tasks")));
+  tasks.forEach(task => {
+    if (task.task === event.nextElementSibling.value) {
+      task.completed = !task.completed;
+    }
+  });
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+  event.nextElementSibling.classList.toggle("completed");
+}
 
-// function addTodo() { 
-//     const inputText = document.getElementById('todosinput').value
-//     const listNode = document.getElementById('todolistitems')
-//     const liNode = document.createElement("div")
-//     const li = document.createElement("li")
-//     const liImg = document.createElement("img")
-//     const textNode = document.createTextNode(inputText)
-//     liImg.src = "images/closetodobutton.svg"
-//     liImg.style.width = "20px"
-//     liImg.className = "closetodo"
-//     listNode.appendChild(liNode)
-//     liNode.appendChild(li)
-//     liNode.appendChild(liImg)
-//     li.appendChild(textNode)
-// }
+function removeTask(event) {
+  let tasks = Array.from(JSON.parse(localStorage.getItem("tasks")));
+  tasks.forEach(task => {
+    if (task.task === event.parentNode.children[1].value) {
+      // delete task
+      tasks.splice(tasks.indexOf(task), 1);
+    }
+  });
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+  event.parentElement.remove();
+}
 
-// function addTodo() { 
-//     const inputText = document.getElementById('todosinput').value
-//     const listNode = document.getElementById('todolistitems')
-//     const liNode = document.createElement("div")
-//     const li = document.createElement("li")
-//     const liImg = document.createElement("img")
-//     const textNode = document.createTextNode(inputText)
-//     liImg.src = "images/closetodobutton.svg"
-//     liImg.style.width = "20px"
-//     liImg.setAttribute("class", "closetodo")
-//     listNode.appendChild(liNode)
-//     liNode.appendChild(li)
-//     liNode.appendChild(liImg)
-//     li.appendChild(textNode)
-// }
+// store current task to track changes
+var currentTask = null;
 
-// Create a "close" button and append it to each list item
+// get current task
+function getCurrentTask(event) {
+  currentTask = event.value;
+}
 
-
-
-// Click on a close button to hide the current list item
-
-
-
-// Add a "checked" symbol when clicking on a list item
-
-
-
+// edit the task and update local storage
+function editTask(event) {
+  let tasks = Array.from(JSON.parse(localStorage.getItem("tasks")));
+  // check if task is empty
+  if (event.value === "") {
+    alert("Task is empty!");
+    event.value = currentTask;
+    return;
+  }
+  // task already exist
+  tasks.forEach(task => {
+    if (task.task === event.value) {
+      alert("Task already exist!");
+      event.value = currentTask;
+      return;
+    }
+  });
+  // update task
+  tasks.forEach(task => {
+    if (task.task === currentTask) {
+      task.task = event.value;
+    }
+  });
+  // update local storage
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}

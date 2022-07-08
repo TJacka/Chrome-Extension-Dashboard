@@ -85,24 +85,29 @@ h2 {
     font-weight: normal;
 }
 
-.author p, .links p, .todolist p {
+.author p, .todolist p {
     margin: 0;
     padding: 0;
 }
 
 p.todolist {
-    margin-top: 0px;
+    margin-top: -2px;
 }
 
 .td, .weather {
     width: 200px;
 }
 
-.links a, .todolist {
+.linkslist, .todolist {
     text-decoration: none;
     color: white;
     text-shadow: 1px 1px 2px rgb(51, 51, 51), 0px 0px 5px #565656;
     font-size: 1.1rem;
+}
+
+.linkslist {
+    margin-bottom: -3px;
+    margin-right: 1px;
 }
 
 p#location, p#author {
@@ -137,19 +142,20 @@ p.weather-temp {
     margin-left: 0px;
 }
 
-#links {
-    width: 175px;
-    background-color: rgba(0, 0, 0, 0.5);
+.links {
+    width: 300px;
+    background-color: rgba(255, 255, 255, 0.8);
     position: absolute;
     right: 10px;
-    bottom: 50px;
+    bottom: 45px;
     border-radius: 15px;
-    text-align: right;
-    padding-right: 10px;
+    text-align: left;
+    padding: 10px 8px 0;
     color: white;
     display: none;
     flex-direction: column;
     text-shadow: 1px 1px 2px rgb(51, 51, 51), 0px 0px 5px #565656;
+    box-shadow: 0px 0px 10px rgb(66, 66, 66);
 }
 
 .todos {
@@ -179,7 +185,7 @@ p.weather-temp {
     margin: 10px 0;
 }
 
-.todosform input {
+.todosinput {
     padding: 13px 10px 11px;
     margin: 1px 0 12px;
     margin-left: 4px;
@@ -189,6 +195,21 @@ p.weather-temp {
     border: none;
     box-shadow: 0px 4px 10px -10px black;
     width: 272px;
+    font-size: 1rem;
+    color: black;
+    font-weight: 700;
+}
+
+.linksinput {
+    padding: 13px 10px 11px;
+    margin: 1px 0 12px;
+    margin-left: 5px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 7px;
+    outline: none;
+    border: none;
+    box-shadow: 0px 4px 10px -10px black;
+    width: 273px;
     font-size: 1rem;
     color: black;
     font-weight: 700;
@@ -215,6 +236,7 @@ p.weather-temp {
     margin: 6px auto 0;
     box-shadow: 0px 4px 10px -10px black;
     cursor: pointer;
+    color: white;
 }
 
 .todobtns {
@@ -248,6 +270,18 @@ p.weather-temp {
     text-shadow: none;
 }
 
+.todoslabel {
+    margin: 1px 2px 5px 3px;
+    padding: 2px 0;
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    text-shadow: none;
+}
+
 img.closetodos {
     height: 20px;
     width: 20px;
@@ -255,6 +289,12 @@ img.closetodos {
 }
 
 img.closetodos {
+    cursor: pointer;
+}
+
+.closelinks {
+    margin-top: -7px;
+    margin-right: 3px;
     cursor: pointer;
 }
 
@@ -323,12 +363,12 @@ li a:hover {
     cursor: pointer;
 }
 
-.homelink, .todolist {
+.linkslist, .todolist {
     font-size: 1.2rem;
     font-weight: 700;
 }
 
-.homelink:hover, .todolist:hover {
+.linkslist:hover, .todolist:hover {
     cursor: pointer;
     color: rgb(247, 207, 4);
 }
@@ -337,6 +377,7 @@ li a:hover {
     cursor: pointer;
     height: 15px;
     margin-bottom: 2px;
+    margin-left: -1px;
 }
 
 /* ************** MEDIA QUERIES ************** */

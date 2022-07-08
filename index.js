@@ -2,12 +2,16 @@ const links = document.getElementById("links")
 const todos = document.getElementById("todoitems")
 const close = document.getElementsByClassName('closetodo')
 
+// Change background image
 
-document.getElementById("closebtn").addEventListener("click", () => links.style.display = "none")
-document.getElementById("homelink").addEventListener("click", () => links.style.display = "flex")
+document.getElementById("imagesettings").addEventListener("click", () => getBackgroundImage())
+
+
+// Todo List
+
+document.getElementById("todosubmit").addEventListener("click", addTodo)
 document.getElementById("todolist").addEventListener("click", () => todos.style.display = "flex")
 document.getElementById("closetodos").addEventListener("click", () => todos.style.display = "none")
-document.getElementById("imagesettings").addEventListener("click", () => getBackgroundImage())
 document.getElementById("todoclear").addEventListener("click", removeAllChildNodes)
 
 function addTodo() {
@@ -38,7 +42,54 @@ function addTodo() {
     document.getElementById("todosinput").value = "";   
 }
 
-document.getElementById("todosubmit").addEventListener("click", addTodo)
+function removeAllChildNodes() {
+    for (let i = 0; i < close.length; i++) {
+        close[i].parentElement.style.display = "none"
+    }
+}
+
+// Add a "checked" symbol when clicking on a list item
+const list = document.getElementById('todoListItems');
+list.addEventListener('click', function(e) {
+  if (e.target.tagName === 'LI') {
+    e.target.classList.toggle('checked');
+  }
+}, false);
+
+// Links list
+
+document.getElementById("closelinks").addEventListener("click", () => links.style.display = "none")
+document.getElementById("linkslist").addEventListener("click", () => links.style.display = "flex")
+document.getElementById("linksubmit").addEventListener("click", addLink)
+document.getElementById("todoclear").addEventListener("click", removeAllChildNodes)
+
+function addLink() {
+    if (document.getElementById("todosinput").value === "") {
+        alert("Please enter a todo item")
+        return
+    }
+    const inputText = document.getElementById('todosinput').value
+    const listNode = document.getElementById('todoListItems')
+    const liNode = document.createElement("div")
+    const li = document.createElement("li")
+    const liImg = document.createElement("img")
+    const textNode = document.createTextNode(inputText)
+    const close = document.getElementsByClassName("closetodo")
+    liImg.src = "images/closetodobutton.svg"
+    liImg.style.width = "20px"
+    liImg.style.height = "35px"
+    liImg.className = "closetodo"
+    listNode.appendChild(liNode)
+    liNode.appendChild(li)
+    liNode.appendChild(liImg)
+    li.appendChild(textNode)
+    for (let i = 0; i < close.length; i++) {
+        close[i].onclick = () => {
+            close[i].parentElement.style.display = "none"
+            } 
+    }
+    document.getElementById("todosinput").value = "";   
+}
 
 function removeAllChildNodes() {
     for (let i = 0; i < close.length; i++) {
@@ -47,14 +98,18 @@ function removeAllChildNodes() {
 }
 
 // Add a "checked" symbol when clicking on a list item
-const list = document.querySelector('ul');
-list.addEventListener('click', function(e) {
+const listlinks = document.getElementById('linkListItems');
+listlinks.addEventListener('click', function(e) {
   if (e.target.tagName === 'LI') {
     e.target.classList.toggle('checked');
   }
 }, false);
 
+
+
+
 // Fetching background image and details
+
 function getBackgroundImage() {
     fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature")
     .then(res => res.json())
