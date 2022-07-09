@@ -112,7 +112,7 @@ function getBackgroundImage() {
     fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature")
     .then(res => res.json())
     .then(data => {
-        document.body.style.backgroundImage = `url(${data.urls.full})`
+        document.body.style.backgroundImage = `url(${data.urls.regular})`
         document.getElementById("location").textContent = `${data.location.name}`
         document.getElementById("photographer").textContent = `${data.user.name}`
     })
@@ -129,14 +129,17 @@ function getCurrentTime() {
     const date = new Date()
     document.getElementById("time").textContent = date.toLocaleTimeString("en-us", {timeStyle: "short"}).toLowerCase()
 }
-setInterval(getCurrentTime, 1000)
+setInterval(getCurrentTime, 0)
 
 // Fetching weather info
+const slug1 = "80c02431694c6"
+const slug4 = "67ce0c628484bfb0bdb"
+
 navigator.geolocation.getCurrentPosition(position => {
     let latitude = position.coords.latitude
     let longitude = position.coords.longitude
 
-    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude.toFixed(2)}&lon=${longitude.toFixed(2)}&units=imperial&appid=80c02431694c667ce0c628484bfb0bdb`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude.toFixed(2)}&lon=${longitude.toFixed(2)}&units=imperial&appid=${slug1}${slug4}`)
         .then(res => {
             if (!res.ok) {
                 throw Error("Weather data not available")
@@ -146,7 +149,7 @@ navigator.geolocation.getCurrentPosition(position => {
         .then(data => {
             const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
             document.getElementById("weather").innerHTML = `
-                <img src=${iconUrl} />
+                <img class="weathericon" src=${iconUrl} />
                 <p class="weather-temp">${Math.round(data.main.temp)}º</p>
                 <p class="weather-city">${data.name}</p>
             `
