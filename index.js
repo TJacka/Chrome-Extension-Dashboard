@@ -3,9 +3,72 @@ const todos = document.getElementById("todoitems")
 const close = document.getElementsByClassName('closetodo')
 const closelink = document.getElementsByClassName('closelink')
 
-// Change background image
+// Fetching background image and details
 
 document.getElementById("imagesettings").addEventListener("click", () => getBackgroundImage())
+
+function getBackgroundImage() {
+    fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature")
+    .then(res => res.json())
+    .then(data => {
+        document.body.style.backgroundImage = `url(${data.urls.regular})`
+        if (data.location.name) {
+            document.getElementById("location").textContent = `${data.location.name}`
+            } else {
+            document.getElementById("location").textContent = "Unknown"
+        }
+        const photographer = data.user.name
+        photographer[0].toUpperCase() + photographer.substring(1)
+        if (photographer) {
+            document.getElementById("photographer").textContent = `${photographer}`
+            } else {
+            document.getElementById("photographer").textContent = `Unknown`
+        }
+    })
+    .catch(err => {
+        document.body.style.backgroundImage = `url(https://images.unsplash.com/photo-1560008511-11c63416e52d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMTEwMjl8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjI4NDIxMTc&ixlib=rb-1.2.1&q=80&w=1080)`
+        document.getElementById("author").textContent = `By: Dodi Achmad`
+    })
+}
+
+getBackgroundImage()
+
+
+// Getting current time
+
+function getCurrentTime() {
+    const date = new Date()
+    document.getElementById("time").textContent = date.toLocaleTimeString("en-us", {timeStyle: "short"}).toLowerCase()
+}
+getCurrentTime()
+
+
+// Fetching weather info
+
+const slug1 = "80c02431694c6"
+const slug4 = "67ce0c628484bfb0bdb"
+
+navigator.geolocation.getCurrentPosition(position => {
+    let latitude = position.coords.latitude
+    let longitude = position.coords.longitude
+
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude.toFixed(2)}&lon=${longitude.toFixed(2)}&units=imperial&appid=${slug1}${slug4}`)
+        .then(res => {
+            if (!res.ok) {
+                throw Error("Weather data not available")
+            }
+            return res.json()
+        })
+        .then(data => {
+            const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+            document.getElementById("weather").innerHTML = `
+                <img class="weathericon" src=${iconUrl} />
+                <p class="weather-temp">${Math.round(data.main.temp)}º</p>
+                <p class="weather-city">${data.name}</p>
+            `
+        })
+        .catch(err => console.error(err))
+});
 
 
 // Todo List
@@ -43,6 +106,8 @@ function addTodo() {
     document.getElementById("todosinput").value = "";   
 }
 
+// Removing items from todo list
+
 function removeAllChildNodesTodos() {
     for (let i = 0; i < close.length; i++) {
         close[i].parentElement.style.display = "none"
@@ -50,12 +115,14 @@ function removeAllChildNodesTodos() {
 }
 
 // Add a "checked" symbol when clicking on a list item
+
 const list = document.getElementById('todoListItems');
 list.addEventListener('click', function(e) {
   if (e.target.tagName === 'LI') {
     e.target.classList.toggle('checked');
   }
 }, false);
+
 
 // Links list
 
@@ -92,6 +159,8 @@ function addLink() {
     document.getElementById("linksinput").value = "";   
 }
 
+// Removing items from links list
+
 function removeAllChildNodesLinks() {
     for (let i = 0; i < closelink.length; i++) {
         closelink[i].parentElement.style.display = "none"
@@ -99,6 +168,7 @@ function removeAllChildNodesLinks() {
 }
 
 // Add a "checked" symbol when clicking on a list item
+
 const listlinks = document.getElementById('linkListItems');
 listlinks.addEventListener('click', function(e) {
   if (e.target.tagName === 'LI') {
@@ -106,66 +176,6 @@ listlinks.addEventListener('click', function(e) {
   }
 }, false);
 
-// Fetching background image and details
-
-function getBackgroundImage() {
-    fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature")
-    .then(res => res.json())
-    .then(data => {
-        document.body.style.backgroundImage = `url(${data.urls.regular})`
-        if (data.location.name) {
-            document.getElementById("location").textContent = `${data.location.name}`
-            } else {
-            document.getElementById("location").textContent = "Unknown"
-        }
-        const photographer = data.user.name
-        photographer[0].toUpperCase() + photographer.substring(1)
-        if (photographer) {
-            document.getElementById("photographer").textContent = `${photographer}`
-            } else {
-            document.getElementById("photographer").textContent = `Unknown`
-        }
-    })
-    .catch(err => {
-        document.body.style.backgroundImage = `url(https://images.unsplash.com/photo-1560008511-11c63416e52d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMTEwMjl8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjI4NDIxMTc&ixlib=rb-1.2.1&q=80&w=1080)`
-        document.getElementById("author").textContent = `By: Dodi Achmad`
-    })
-}
-
-getBackgroundImage()
-
-// Getting current time
-function getCurrentTime() {
-    const date = new Date()
-    document.getElementById("time").textContent = date.toLocaleTimeString("en-us", {timeStyle: "short"}).toLowerCase()
-}
-setInterval(getCurrentTime, 0)
-
-// Fetching weather info
-const slug1 = "80c02431694c6"
-const slug4 = "67ce0c628484bfb0bdb"
-
-navigator.geolocation.getCurrentPosition(position => {
-    let latitude = position.coords.latitude
-    let longitude = position.coords.longitude
-
-    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude.toFixed(2)}&lon=${longitude.toFixed(2)}&units=imperial&appid=${slug1}${slug4}`)
-        .then(res => {
-            if (!res.ok) {
-                throw Error("Weather data not available")
-            }
-            return res.json()
-        })
-        .then(data => {
-            const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
-            document.getElementById("weather").innerHTML = `
-                <img class="weathericon" src=${iconUrl} />
-                <p class="weather-temp">${Math.round(data.main.temp)}º</p>
-                <p class="weather-city">${data.name}</p>
-            `
-        })
-        .catch(err => console.error(err))
-});
 
 // Fetching quote of the day
 
@@ -174,10 +184,10 @@ let quoteNum = Math.floor(Math.random() * 1643)
 fetch(`https://type.fit/api/quotes`)
     .then(res => res.json())
     .then(data => {
-        document.getElementById("quote").textContent = `"${data[quoteNum].text}"`
+        document.getElementById("quote").innerHTML = `<h2><span>&#8220</span>${data[quoteNum].text}<span>&#8221</span></h2>`
         document.getElementById("quote--author").textContent = `-${data[quoteNum].author}`
     })
     .catch(err => {
-		document.getElementById("quote").textContent = `"Knowing is not enough; we must apply. Willing is not enough; we must do."`
+		document.getElementById("quote").innerHTML = `<h2><span>&#8220</span>Knowing is not enough; we must apply. Willing is not enough; we must do.<span>&#8221</span></h2>`
         document.getElementById("quote--author").textContent = `Johann Wolfgang von Goethe`
     })
