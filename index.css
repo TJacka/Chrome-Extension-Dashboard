@@ -16,6 +16,7 @@ body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-shadow: 1px 1px 2px rgb(51, 51, 51), 0px 0px 5px #565656;
     font-size: 16px;
+    overflow: hidden;
 }
 
 @keyframes fadeInAnimation {
@@ -45,7 +46,7 @@ main {
     text-align: center;
     font-size: 12rem;
     font-weight: 600;
-    padding-top: 40px;
+    padding-top: 88px;
 }
 
 h2 {
@@ -57,7 +58,6 @@ h2 {
 .quote {
     text-align: center;
     height: 40px;
-    margin-top: -100px;
 }
 
 #quote--author {
@@ -70,6 +70,20 @@ h2 {
 #quote {
     max-width: 50vw;
     margin: 0 auto;
+    height: 400px;
+    margin-top: -185px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quotediv {
+    display: block;
+}
+
+.quotediv p {
+    font-size: 1.4rem;
+    margin-top: -5px;
 }
 
 .bottom {
@@ -85,7 +99,6 @@ h2 {
 
 .photographer, .location {
     display: flex;
-    align-items: flex-end;
     font-size: 0.8rem;
     margin-top: -10px;
 }
@@ -100,10 +113,10 @@ h2 {
 }
 
 .photographer {
-    margin-top: 5px;
+    margin-top: -7px;
 }
 
-.photographer span, .location span {
+.photographer .span, .location .span {
     font-weight: normal;
 }
 
@@ -425,9 +438,13 @@ li a:hover {
 
 #imagesettings {
     cursor: pointer;
-    height: 45px;
-    margin-top: 0px;
+    height: 55px;
+    margin-top: -5px;
     margin-left: 0px;
+}
+
+#linkscorner:hover, #todocorner:hover {
+    cursor: pointer;
 }
 
 #todoimage, #linksimage {
@@ -458,10 +475,6 @@ li a:hover {
     color: blue;
 }
 
-.weathericon {
-    text-shadow: 2px 2px 2px black;
-}
-
 /* ************** MEDIA QUERIES ************** */
 
 @media (max-width: 1280px) {
@@ -472,15 +485,81 @@ li a:hover {
     .time {
         text-align: center;
         font-size: 9rem;
-        font-weight: 800;
-        padding-top: 30px;
+        padding-top: 70px;
     }
 
-    #quote--author {
+    .quotediv p {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 900px) {
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    .time {
+        text-align: center;
+        font-size: 8rem;
+        padding-top: 120px;
+    }
+
+    .quotediv h2 {
+        font-size: 1.5rem;
+    }
+
+    .quotediv p {
+        font-size: 1.2rem;
+    }
+
+    #quote {
+        max-width: 70vw;
+    }
+}
+
+@media (max-width: 600px) {
+    h2 {
         font-size: 1rem;
     }
 
-    .quote {
-        margin-top: -60px;
+    .time {
+        text-align: center;
+        font-size: 5rem;
+        padding-top: 90px;
+    }
+
+    .quotediv h2 {
+        font-size: 1.1rem;
+    }
+
+    .quotediv p {
+        font-size: 0.9rem;
+    }
+
+    #quote {
+        max-width: 80vw;
+    }
+
+    .location, #location {
+        font-size: 0.6rem;
+    }
+
+    .weather {
+        width: 130px;
+    }
+
+    #imagesettings {
+        width: 40px;
+        margin-top: -17px;
+        margin-left: -3px;
+        margin-right: 10px;
+    }
+
+    .photographer {
+        display: none;
+    }
+
+    .weather-city {
+        font-size: 1rem;
     }
 }

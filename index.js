@@ -184,10 +184,34 @@ let quoteNum = Math.floor(Math.random() * 1643)
 fetch(`https://type.fit/api/quotes`)
     .then(res => res.json())
     .then(data => {
-        document.getElementById("quote").innerHTML = `<h2><span>&#8220</span>${data[quoteNum].text}<span>&#8221</span></h2>`
-        document.getElementById("quote--author").textContent = `-${data[quoteNum].author}`
+        const quoteAuthor = data[quoteNum].author
+        if (quoteAuthor == null) {
+            quoteAuthor = "Unknown"
+        }
+        document.getElementById("quote").innerHTML = `<div class="quotediv"><h2><span>&#8220</span>${data[quoteNum].text}<span>&#8221</span></h2><p>-${quoteAuthor}</p></div>`
     })
     .catch(err => {
-		document.getElementById("quote").innerHTML = `<h2><span>&#8220</span>Knowing is not enough; we must apply. Willing is not enough; we must do.<span>&#8221</span></h2>`
-        document.getElementById("quote--author").textContent = `Johann Wolfgang von Goethe`
+		document.getElementById("quote").innerHTML = `<div class="quotediv"><h2><span>&#8220</span>Knowing is not enough; we must apply. Willing is not enough; we must do.<span>&#8221</span></h2><p>-Johann Wolfgang von Goethe</p></div>`
+    })
+
+
+    // Make todos link hover on todos image hover
+
+    document.getElementById("todocorner").addEventListener("mouseover", () => {
+        document.getElementById("todolist").style.color = "rgb(247, 207, 4)"
+    })
+
+    document.getElementById("todocorner").addEventListener("mouseout", () => {
+        document.getElementById("todolist").style.color = "white"
+    })
+
+    
+    // Make links link hover on todos image hover
+
+    document.getElementById("linkscorner").addEventListener("mouseover", () => {
+        document.getElementById("linkslist").style.color = "rgb(247, 207, 4)"
+    })
+
+    document.getElementById("linkscorner").addEventListener("mouseout", () => {
+        document.getElementById("linkslist").style.color = "white"
     })

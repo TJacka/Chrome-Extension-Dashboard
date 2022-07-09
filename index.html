@@ -9,18 +9,16 @@
         <title>Personal Dashboard</title>
     </head>
     <body id="body">
-        <div id="front"></div>
-        <div id="back"></div>
         <main>    
             <section class="top">
                 <div class="photodeets">
-                    <img id="imagesettings" src="images/settingbutton.svg" alt="">
+                    <img id="imagesettings" src="images/settingbutton.svg" alt="" title="Change Image">
                     <div class="image--details">
                         <div class="location">
-                            <span>Location:&nbsp</span><p id="location"></p>
+                            <p class="span">Location:&nbsp</p><p id="location"></p>
                         </div>
                         <div class="photographer">
-                            <span>By:&nbsp</span><p id="photographer"></p>
+                            <p class="span">By:&nbsp</p><p id="photographer"></p>
                         </div>
                     </div>
                 </div>
@@ -34,7 +32,7 @@
             </div>
             <section class="bottom">
                 <div class="td">
-                    <div class="todocorner">
+                    <div class="todocorner" id="todocorner" title="Create a list of todos">
                         <img id="todoimage" src="images/todolist3.png" alt="">
                         <p class="todolist" id="todolist">Todos</p>
                     </div>
@@ -58,10 +56,9 @@
                 </div>
                 
                 <div class="llist">
-                    <div class="linkscorner">
+                    <div class="linkscorner" id="linkscorner" title="Store your easy access links">
                         <p class="linkslist" id="linkslist">Links</p>
                         <img id="linksimage" src="images/links2.png" alt="">
-                    
                     </div>
                     <div class="links" id="links">
                         <form class="linksform">
