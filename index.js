@@ -113,8 +113,18 @@ function getBackgroundImage() {
     .then(res => res.json())
     .then(data => {
         document.body.style.backgroundImage = `url(${data.urls.regular})`
-        document.getElementById("location").textContent = `${data.location.name}`
-        document.getElementById("photographer").textContent = `${data.user.name}`
+        if (data.location.name) {
+            document.getElementById("location").textContent = `${data.location.name}`
+            } else {
+            document.getElementById("location").textContent = "Unknown"
+        }
+        const photographer = data.user.name
+        photographer[0].toUpperCase() + photographer.substring(1)
+        if (photographer) {
+            document.getElementById("photographer").textContent = `${photographer}`
+            } else {
+            document.getElementById("photographer").textContent = `Unknown`
+        }
     })
     .catch(err => {
         document.body.style.backgroundImage = `url(https://images.unsplash.com/photo-1560008511-11c63416e52d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMTEwMjl8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjI4NDIxMTc&ixlib=rb-1.2.1&q=80&w=1080)`
