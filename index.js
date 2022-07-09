@@ -11,6 +11,7 @@ document.getElementById("imagesettings").addEventListener("click", () => getBack
 // Todo List
 
 document.getElementById("todosubmit").addEventListener("click", addTodo)
+document.getElementById("todoimage").addEventListener("click", () => todos.style.display = "flex")
 document.getElementById("todolist").addEventListener("click", () => todos.style.display = "flex")
 document.getElementById("closetodos").addEventListener("click", () => todos.style.display = "none")
 document.getElementById("todoclear").addEventListener("click", removeAllChildNodesTodos)
@@ -60,6 +61,7 @@ list.addEventListener('click', function(e) {
 
 document.getElementById("closelinks").addEventListener("click", () => links.style.display = "none")
 document.getElementById("linkslist").addEventListener("click", () => links.style.display = "flex")
+document.getElementById("linksimage").addEventListener("click", () => links.style.display = "flex")
 document.getElementById("linksubmit").addEventListener("click", addLink)
 document.getElementById("linksclear").addEventListener("click", removeAllChildNodesLinks)
 
