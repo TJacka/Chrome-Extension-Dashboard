@@ -79,6 +79,38 @@ document.getElementById("todolist").addEventListener("click", () => todos.style.
 document.getElementById("closetodos").addEventListener("click", () => todos.style.display = "none")
 document.getElementById("todoclear").addEventListener("click", removeAllChildNodesTodos)
 
+function getTodos() {
+    for (let i = 0; i < localStorage.length; i++) {
+        let todoItem = localStorage.getItem(i);
+        if (todoItem == null) {
+            return
+        }
+        const inputText = todoItem
+        const listNode = document.getElementById('todoListItems')
+        const textNode = document.createTextNode(inputText)
+        const liNode = document.createElement("div")
+        const li = document.createElement("li")
+        const liImg = document.createElement("img")
+        const close = document.getElementsByClassName("closetodo")
+        liImg.src = "images/closetodobutton.svg"
+        liImg.style.width = "20px"
+        liImg.className = "closetodo"
+        li.className = "liclass"
+        listNode.appendChild(liNode)
+        liNode.appendChild(li)
+        liNode.appendChild(liImg)
+        li.appendChild(textNode)
+        for (let i = 0; i < close.length; i++) {
+            close[i].onclick = () => {
+                close[i].parentElement.style.display = "none"
+            } 
+        }
+    }
+}
+
+getTodos()
+
+
 function addTodo() {
     if (document.getElementById("todosinput").value === "") {
         alert("Please enter a todo item")
@@ -91,19 +123,22 @@ function addTodo() {
     const liImg = document.createElement("img")
     const textNode = document.createTextNode(inputText)
     const close = document.getElementsByClassName("closetodo")
+    const liclass = document.getElementsByClassName("liclass")
     liImg.src = "images/closetodobutton.svg"
     liImg.style.width = "20px"
     liImg.className = "closetodo"
+    li.className = "liclass"
     listNode.appendChild(liNode)
     liNode.appendChild(li)
     liNode.appendChild(liImg)
     li.appendChild(textNode)
+    localStorage.setItem(liclass.length - 1, inputText)
     for (let i = 0; i < close.length; i++) {
         close[i].onclick = () => {
             close[i].parentElement.style.display = "none"
             } 
     }
-    document.getElementById("todosinput").value = "";   
+    document.getElementById("todosinput").value = "";  
 }
 
 // Removing items from todo list
@@ -111,6 +146,7 @@ function addTodo() {
 function removeAllChildNodesTodos() {
     for (let i = 0; i < close.length; i++) {
         close[i].parentElement.style.display = "none"
+        localStorage.removeItem(i)
     }
 }
 

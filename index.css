@@ -266,7 +266,7 @@ p.weather-temp {
 }
 
 .todosubmit, .todoclear {
-    padding: 12px 14px;
+    padding: 11px 14px;
     width: 130px;
     text-align: center;
     border-radius: 7px;
@@ -278,6 +278,18 @@ p.weather-temp {
     box-shadow: 0px 4px 10px -10px black;
     cursor: pointer;
     color: white;
+}
+
+.todosubmit {
+    margin-left: 4px;
+}
+
+#todoclear {
+    margin-left: 8px;
+}
+
+#linksubmit {
+    margin-left: 5px;
 }
 
 .todobtns {
@@ -301,7 +313,6 @@ p.weather-temp {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: space-between;
 }
 
 .todoslabel {
@@ -330,6 +341,7 @@ p.weather-temp {
 
 #linkslabel {
     padding-left: 2px;
+    padding-right: 4px;
 }
 
 img.closetodos {
@@ -345,6 +357,7 @@ img.closetodos {
 .closelinks {
     margin-top: -7px;
     margin-right: 5px;
+    margin-left: 2px;
     cursor: pointer;
 }
 
