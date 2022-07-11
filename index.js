@@ -12,6 +12,7 @@ function getBackgroundImage() {
     .then(res => res.json())
     .then(data => {
         document.body.style.backgroundImage = `url(${data.urls.regular})`
+        
         if (data.location.name) {
             document.getElementById("location").textContent = `${data.location.name}`
             } else {
@@ -82,9 +83,7 @@ document.getElementById("todoclear").addEventListener("click", removeAllChildNod
 function getTodos() {
     for (let i = 0; i < localStorage.length; i++) {
         let todoItem = localStorage.getItem(i);
-        if (todoItem == null) {
-            return
-        }
+        
         const inputText = todoItem
         const listNode = document.getElementById('todoListItems')
         const textNode = document.createTextNode(inputText)
@@ -96,6 +95,7 @@ function getTodos() {
         liImg.style.width = "20px"
         liImg.className = "closetodo"
         li.className = "liclass"
+        liImg.id = `${i}`
         listNode.appendChild(liNode)
         liNode.appendChild(li)
         liNode.appendChild(liImg)
@@ -103,6 +103,7 @@ function getTodos() {
         for (let i = 0; i < close.length; i++) {
             close[i].onclick = () => {
                 close[i].parentElement.style.display = "none"
+                localStorage.removeItem(i)
             } 
         }
     }
@@ -133,11 +134,6 @@ function addTodo() {
     liNode.appendChild(liImg)
     li.appendChild(textNode)
     localStorage.setItem(liclass.length - 1, inputText)
-    for (let i = 0; i < close.length; i++) {
-        close[i].onclick = () => {
-            close[i].parentElement.style.display = "none"
-            } 
-    }
     document.getElementById("todosinput").value = "";  
 }
 
@@ -146,8 +142,8 @@ function addTodo() {
 function removeAllChildNodesTodos() {
     for (let i = 0; i < close.length; i++) {
         close[i].parentElement.style.display = "none"
-        localStorage.removeItem(i)
     }
+    localStorage.clear()
 }
 
 // Add a "checked" symbol when clicking on a list item
