@@ -24,13 +24,13 @@ function addTodo(txt) {
     liImg.addEventListener("click", (e) => {
       liNode.parentNode.removeChild(liNode)
       savedTasks = savedTasks.filter((e) => e !== txt)
-      localStorage.setItem("tasks", JSON.stringify(savedTasks))
+      localStorage.setItem(todos, JSON.stringify(savedTasks))
     })
   }
 
   // Load saved tasks
   
-  let savedTasks = JSON.parse(localStorage.getItem("tasks")) || []
+  let savedTasks = JSON.parse(localStorage.getItem("todos")) || [];
   
   // Add UI elements for any saved task
   

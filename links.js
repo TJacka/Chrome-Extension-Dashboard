@@ -22,15 +22,15 @@ function addLink(txt) {
     liNode.appendChild(li)
     liNode.appendChild(liImg)
     liImg.addEventListener("click", (e) => {
-      liNode.parentNode.removeChild(liNode);
+      liNode.parentNode.removeChild(liNode)
       savedLinks = savedLinks.filter((e) => e !== txt)
-      localStorage.setItem("links", JSON.stringify(savedLinks))
+      localStorage.setItem(links, JSON.stringify(savedLinks))
     })
   }
 
   // Load saved tasks
   
-  let savedLinks = JSON.parse(localStorage.getItem("links")) || [];
+  let savedLinks = JSON.parse(localStorage.getItem("links")) || []
   
   // Add UI elements for any saved task
   
@@ -56,7 +56,7 @@ function removeLinks() {
     for (let i = 0; i < closeLink.length; i++) {
         closeLink[i].style.display = "none"
     }
-    localStorage.setItem("links", "")
+    localStorage.setItem("links", [])
 }
 
 // Make links link hover on todos image hover
