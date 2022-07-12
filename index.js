@@ -1,8 +1,3 @@
-const links = document.getElementById("links")
-const todos = document.getElementById("todoitems")
-const close = document.getElementsByClassName('closetodo')
-const closelink = document.getElementsByClassName('closelink')
-
 // Fetching background image and details
 
 document.getElementById("imagesettings").addEventListener("click", () => getBackgroundImage())
@@ -71,60 +66,6 @@ navigator.geolocation.getCurrentPosition(position => {
         .catch(err => console.error(err))
 });
 
-
-// Links list
-
-document.getElementById("closelinks").addEventListener("click", () => links.style.display = "none")
-document.getElementById("linkslist").addEventListener("click", () => links.style.display = "flex")
-document.getElementById("linksimage").addEventListener("click", () => links.style.display = "flex")
-document.getElementById("linksubmit").addEventListener("click", addLink)
-document.getElementById("linksclear").addEventListener("click", removeAllChildNodesLinks)
-
-function addLink() {
-    if (document.getElementById("linksinput").value === "") {
-        alert("Please enter a link")
-        return
-    }
-    const inputText = document.getElementById('linksinput').value
-    const listNode = document.getElementById('linkListItems')
-    const liNode = document.createElement("div")
-    const li = document.createElement("li")
-    const liImg = document.createElement("img")
-    const textNode = document.createTextNode(inputText)
-    const closelink = document.getElementsByClassName("closelink")
-    liImg.src = "images/closetodobutton.svg"
-    liImg.style.width = "20px"
-    liImg.className = "closelink"
-    listNode.appendChild(liNode)
-    liNode.appendChild(li)
-    liNode.appendChild(liImg)
-    li.appendChild(textNode)
-    for (let i = 0; i < closelink.length; i++) {
-        closelink[i].onclick = () => {
-            closelink[i].parentElement.style.display = "none"
-            } 
-    }
-    document.getElementById("linksinput").value = "";   
-}
-
-// Removing items from links list
-
-function removeAllChildNodesLinks() {
-    for (let i = 0; i < closelink.length; i++) {
-        closelink[i].parentElement.style.display = "none"
-    }
-}
-
-// Add a "checked" symbol when clicking on a list item
-
-const listlinks = document.getElementById('linkListItems');
-listlinks.addEventListener('click', function(e) {
-  if (e.target.tagName === 'LI') {
-    e.target.classList.toggle('checked');
-  }
-}, false);
-
-
 // Fetching quote of the day
 
 let quoteNum = Math.floor(Math.random() * 1643)
@@ -140,26 +81,4 @@ fetch(`https://type.fit/api/quotes`)
     })
     .catch(err => {
 		document.getElementById("quote").innerHTML = `<div class="quotediv"><h2><span>&#8220</span>Knowing is not enough; we must apply. Willing is not enough; we must do.<span>&#8221</span></h2><p>-Johann Wolfgang von Goethe</p></div>`
-    })
-
-
-    // Make todos link hover on todos image hover
-
-    document.getElementById("todocorner").addEventListener("mouseover", () => {
-        document.getElementById("todolist").style.color = "rgb(247, 207, 4)"
-    })
-
-    document.getElementById("todocorner").addEventListener("mouseout", () => {
-        document.getElementById("todolist").style.color = "white"
-    })
-
-    
-    // Make links link hover on todos image hover
-
-    document.getElementById("linkscorner").addEventListener("mouseover", () => {
-        document.getElementById("linkslist").style.color = "rgb(247, 207, 4)"
-    })
-
-    document.getElementById("linkscorner").addEventListener("mouseout", () => {
-        document.getElementById("linkslist").style.color = "white"
     })
