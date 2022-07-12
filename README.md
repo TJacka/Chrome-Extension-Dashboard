@@ -6,7 +6,7 @@
 
 **Link to live project:** https://tjacka.github.io/Chrome-Extension-Dashboard/
 
-<img src="https://i.ibb.co/BZDcc5W/project.jpg" border="0">
+https://i.ibb.co/BZDcc5W/project.jpg
 
 <br>
 
