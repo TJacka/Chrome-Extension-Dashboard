@@ -4,9 +4,9 @@
 
 <br>
 
-**Link to live project:** https://tjacka.github.io/Chrome-Extension-Dashboard/
+**Link to live project:** <a href="https://tjacka.github.io/Chrome-Extension-Dashboard/" target="_blank" />
 
-<img src="https://i.ibb.co/BZDcc5W/project.jpg" border="0" target="_blank">
+<img src="https://i.ibb.co/BZDcc5W/project.jpg" border="0">
 
 <br>
 
