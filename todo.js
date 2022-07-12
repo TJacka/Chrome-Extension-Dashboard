@@ -24,7 +24,7 @@ function addTodo(txt) {
     liImg.addEventListener("click", (e) => {
       liNode.parentNode.removeChild(liNode)
       savedTasks = savedTasks.filter((e) => e !== txt)
-      localStorage.setItem(todos, JSON.stringify(savedTasks))
+      localStorage.setItem("todos", JSON.stringify(savedTasks))
     })
   }
 
@@ -43,7 +43,7 @@ function addTodo(txt) {
       alert("Please enter a todo!")
     } else {
       savedTasks.push(txt)
-      localStorage.setItem("tasks", JSON.stringify(savedTasks))
+      localStorage.setItem("todos", JSON.stringify(savedTasks))
       input.value = ""
       addTodo(txt)
     }
@@ -54,9 +54,9 @@ function addTodo(txt) {
 const close = document.getElementsByClassName("closealltodos")
 function removeTodos() {
     for (let i = 0; i < close.length; i++) {
-        close[i].parentElement.style.display = "none"
+        close[i].style.display = "none"
     }
-    localStorage.setItem("tasks", [])
+    localStorage.removeItem("todos")
 }
 
 list.addEventListener('click', function(e) {

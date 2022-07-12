@@ -14,7 +14,7 @@ function addLink(txt) {
     let li = document.createElement("li")
     liImg.src = "images/closetodobutton.svg"
     liImg.style.width = "20px"
-    li.innerHTML = txt
+    li.innerHTML = `<a href="https://${txt}" target="_blank">${txt}</a>`
     linksList.insertBefore(li, linksList.childNodes[0])
     liImg.classList.add("closelink")
     liNode.classList.add("closealllinks")
@@ -24,13 +24,13 @@ function addLink(txt) {
     liImg.addEventListener("click", (e) => {
       liNode.parentNode.removeChild(liNode)
       savedLinks = savedLinks.filter((e) => e !== txt)
-      localStorage.setItem(links, JSON.stringify(savedLinks))
+      localStorage.setItem("links", JSON.stringify(savedLinks))
     })
   }
 
   // Load saved tasks
   
-  let savedLinks = JSON.parse(localStorage.getItem("links")) || []
+  let savedLinks = JSON.parse(localStorage.getItem("links")) || [];
   
   // Add UI elements for any saved task
   
@@ -56,7 +56,7 @@ function removeLinks() {
     for (let i = 0; i < closeLink.length; i++) {
         closeLink[i].style.display = "none"
     }
-    localStorage.setItem("links", [])
+    localStorage.removeItem("links")
 }
 
 // Make links link hover on todos image hover
