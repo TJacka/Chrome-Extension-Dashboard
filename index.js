@@ -1,3 +1,5 @@
+window.setInterval('refresh()', 3600000);
+
 // Fetching background image and details
 
 document.getElementById("imagesettings").addEventListener("click", () => getBackgroundImage())
