@@ -30,6 +30,7 @@ function getBackgroundImage() {
 }
 
 getBackgroundImage()
+setInterval(36000000, getBackgroundImage)
 
 
 // Getting current time
@@ -39,10 +40,11 @@ function getCurrentTime() {
     document.getElementById("time").textContent = date.toLocaleTimeString("en-us", {timeStyle: "short"}).toLowerCase()
 }
 getCurrentTime()
-
+setInterval(getCurrentTime, 30000)
 
 // Fetching weather info
 
+function getWeather() {
 const slug1 = "80c02431694c6"
 const slug4 = "67ce0c628484bfb0bdb"
 
@@ -66,7 +68,11 @@ navigator.geolocation.getCurrentPosition(position => {
             `
         })
         .catch(err => console.error(err))
-});
+});}
+
+getWeather()
+setInterval(getWeather, 600000)
+
 
 // Fetching quote of the day
 
