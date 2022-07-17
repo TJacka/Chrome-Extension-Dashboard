@@ -11,14 +11,14 @@
     <body id="body">
         <main>    
             <section class="top">
-                <div class="photodeets">
-                    <img id="imagesettings" src="images/settingbutton.svg" alt="" title="Change Image">
+                <div class="photo--details">
+                    <img id="image--settings" src="images/settingbutton.svg" alt="" title="Change Image">
                     <div class="image--details">
-                        <div class="location">
-                            <p class="span">Location:&nbsp</p><p id="location"></p>
+                        <div class="image--location">
+                            <p class="span">Location:&nbsp</p><p id="image--location"></p>
                         </div>
-                        <div class="photographer">
-                            <p class="span">By:&nbsp</p><p id="photographer"></p>
+                        <div class="image--photographer">
+                            <p class="span">By:&nbsp</p><p id="image--photographer"></p>
                         </div>
                     </div>
                 </div>
@@ -32,49 +32,49 @@
             </div>
             <section class="bottom">
                 <div class="td">
-                    <div class="todocorner" id="todocorner" title="Create a list of todos">
-                        <img id="todoimage" src="images/todolist3.png" alt="">
-                        <p class="todolist" id="todolist">Todos</p>
+                    <div class="todo--corner" id="todo--corner" title="Create a list of todos">
+                        <img id="todo--image" src="images/todolist3.png" alt="">
+                        <p class="todo--list" id="todo--list">Todos</p>
                     </div>
-                    <div class="todoitems" id="todoitems">
-                        <form class="todosform" autocomplete="off">
-                            <div class="todostop">
-                                <div class="todoslabel">
-                                    <label class="todoslabel" for="">Todo List</label>
-                                    <img id="closetodos" class="closetodos" src="images/closebutton1.svg" alt="" width="25px">
+                    <div class="todo--items" id="todo--items">
+                        <form class="todo--form" autocomplete="off">
+                            <div class="todo--top">
+                                <div class="todo--label">
+                                    <label class="todo--label" for="">Todo List</label>
+                                    <img id="close--todo" class="close--todo" src="images/closebutton1.svg" alt="" width="25px">
                                 </div>
-                                <input type="text" type="button" id="todosinput" class="todosinput" placeholder="eg. watch movie" type="text">
+                                <input type="text" type="button" id="todo--input" class="todo--input" placeholder="eg. watch movie" type="text">
                             </div>
-                            <div class="todobtns">
-                                <button class="todosubmit" id="todosubmit" >Add Todo</button>
-                                <p class="todoclear" id="todoclear">Clear All</p>
+                            <div class="todo--btns">
+                                <button class="todo--submit" id="todo--submit" >Add Todo</button>
+                                <p class="todo--clear" id="todo--clear">Clear All</p>
                             </div>
                             </form>
-                        <ul id="todoListItems" class="todos">
+                        <ul id="todo--list--items" class="todo">
                         </ul>
                     </div>
                 </div>
                 
-                <div class="llist">
-                    <div class="linkscorner" id="linkscorner" title="Store your easy access links">
-                        <p class="linkslist" id="linkslist">Links</p>
-                        <img id="linksimage" src="images/links2.png" alt="">
+                <div>
+                    <div class="links--corner" id="links--corner" title="Store your easy access links">
+                        <p class="links--list" id="links--list">Links</p>
+                        <img id="links--image" src="images/links2.png" alt="">
                     </div>
                     <div class="links" id="links">
-                        <form class="linksform" autocomplete="off">
-                            <div class="linkstop">
-                                <div class="todoslabel">
-                                    <img id="closelinks" class="closelinks" src="images/closebutton1.svg" alt="" width="25px">
-                                    <label class="todoslabel" id="linkslabel">Favorite Links</label>
+                        <form class="links--form" autocomplete="off">
+                            <div class="links--top">
+                                <div class="todo--label">
+                                    <img id="close--links" class="close--links" src="images/closebutton1.svg" alt="" width="25px">
+                                    <label class="todo--label" id="links--label">Favorite Links</label>
                                 </div>
-                                <input id="linksinput" class="linksinput " placeholder="eg. email.com" type="text">
+                                <input id="links--input" class="links--input " placeholder="eg. email.com" type="text">
                             </div>
-                            <div class="linkbtns">
-                                <button class="todosubmit" id="linksubmit">Add Link</button>
-                                <p class="todoclear" id="linksclear">Clear All</p>
+                            <div class="links--btns">
+                                <button class="todo--submit" id="links--submit">Add Link</button>
+                                <p class="todo--clear" id="links--clear">Clear All</p>
                             </div>
                             </form>
-                        <ul id="linkListItems" class="linksul">
+                        <ul id="links--list--items" class="links--ul">
                         </ul>
                     </div>
                 </div>

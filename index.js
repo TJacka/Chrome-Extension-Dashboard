@@ -2,30 +2,29 @@ window.setInterval('refresh()', 3600000);
 
 // Fetching background image and details
 
-document.getElementById("imagesettings").addEventListener("click", () => getBackgroundImage())
+document.getElementById("image--settings").addEventListener("click", () => getBackgroundImage())
 
 function getBackgroundImage() {
     fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature")
     .then(res => res.json())
     .then(data => {
         document.body.style.backgroundImage = `url(${data.urls.regular})`
-        
         if (data.location.name) {
-            document.getElementById("location").textContent = `${data.location.name}`
+            document.getElementById("image--location").innerText = `${data.location.name}`
             } else {
-            document.getElementById("location").textContent = "Unknown"
+            document.getElementById("image--location").textContent = "Unknown"
         }
         const photographer = data.user.name
         photographer[0].toUpperCase() + photographer.substring(1)
         if (photographer) {
-            document.getElementById("photographer").textContent = `${photographer}`
+            document.getElementById("image--photographer").textContent = `${photographer}`
             } else {
-            document.getElementById("photographer").textContent = `Unknown`
+            document.getElementById("image--photographer").textContent = `Unknown`
         }
     })
     .catch(err => {
         document.body.style.backgroundImage = `url(https://images.unsplash.com/photo-1560008511-11c63416e52d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMTEwMjl8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjI4NDIxMTc&ixlib=rb-1.2.1&q=80&w=1080)`
-        document.getElementById("author").textContent = `By: Dodi Achmad`
+        document.getElementById("quote--author").textContent = `By: Dodi Achmad`
     })
 }
 
@@ -62,9 +61,9 @@ navigator.geolocation.getCurrentPosition(position => {
         .then(data => {
             const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
             document.getElementById("weather").innerHTML = `
-                <img class="weathericon" src=${iconUrl} />
-                <p class="weather-temp">${Math.round(data.main.temp)}º</p>
-                <p class="weather-city">${data.name}</p>
+                <img class="weather--icon" src=${iconUrl} />
+                <p class="weather--temp">${Math.round(data.main.temp)}º</p>
+                <p class="weather--city">${data.name}</p>
             `
         })
         .catch(err => console.error(err))
@@ -85,8 +84,8 @@ fetch(`https://type.fit/api/quotes`)
         if (quoteAuthor == null) {
             quoteAuthor = "Unknown"
         }
-        document.getElementById("quote").innerHTML = `<div class="quotediv"><h2><span>&#8220</span>${data[quoteNum].text}<span>&#8221</span></h2><p>-${quoteAuthor}</p></div>`
+        document.getElementById("quote").innerHTML = `<div class="quote--div"><h2><span>&#8220</span>${data[quoteNum].text}<span>&#8221</span></h2><p>-${quoteAuthor}</p></div>`
     })
     .catch(err => {
-		document.getElementById("quote").innerHTML = `<div class="quotediv"><h2><span>&#8220</span>Knowing is not enough; we must apply. Willing is not enough; we must do.<span>&#8221</span></h2><p>-Johann Wolfgang von Goethe</p></div>`
+		document.getElementById("quote").innerHTML = `<div class="quote--div"><h2><span>&#8220</span>Knowing is not enough; we must apply. Willing is not enough; we must do.<span>&#8221</span></h2><p>-Johann Wolfgang von Goethe</p></div>`
     })

@@ -77,15 +77,6 @@ h2 {
     justify-content: center;
 }
 
-.quotediv {
-    display: block;
-}
-
-.quotediv p {
-    font-size: 1.4rem;
-    margin-top: -5px;
-}
-
 .bottom {
     display: flex;
     justify-content: space-between;
@@ -97,35 +88,35 @@ h2 {
     font-weight: bold;
 }
 
-.photographer, .location {
+.image--photographer, .image--location {
     display: flex;
     font-size: 0.8rem;
     margin-top: -10px;
 }
 
-.photodeets {
+.photo--details {
     display: flex;
 }
 
-.photodeets img {
+.photo--details img {
     margin-right: 15px;
     height: 40px;
 }
 
-.photographer {
+.image--photographer {
     margin-top: -7px;
 }
 
-.photographer .span, .location .span {
+.image--photographer .span, .image--location .span {
     font-weight: normal;
 }
 
-.photographer p, .todolist p {
+.image--photographer p, .todo--list p {
     margin: 0;
     padding: 0;
 }
 
-p.todolist {
+p.todo--list {
     margin-bottom: -3px;
     margin-left: 40px;
 }
@@ -134,20 +125,20 @@ p.todolist {
     width: 200px;
 }
 
-.linkslist, .todolist {
+.links--list, .todo--list {
     text-decoration: none;
     color: white;
     text-shadow: 1px 1px 2px rgb(51, 51, 51), 0px 0px 5px #565656;
     font-size: 1.1rem;
 }
 
-.linkslist {
+.links--list {
     margin-bottom: -3px;
     margin-right: 55px;
 
 }
 
-p#location, p#photographer {
+p#image--location, p#image--photographer {
     margin-bottom: 0;
 }
 
@@ -164,7 +155,7 @@ div#weather > img {
     width: 70px;
 }
 
-p.weather-city {
+p.weather--city {
     width: 100%;
     text-align: right;
     margin: 0;
@@ -172,7 +163,7 @@ p.weather-city {
     font-size: 0.8rem;
 }
 
-p.weather-temp {
+p.weather--temp {
     margin: 0;
     font-size: 2rem;
     font-weight: bold;
@@ -184,7 +175,7 @@ p.weather-temp {
     max-height: 80vh;
     overflow-y: auto;
     overflow-x: auto;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.98);
     position: absolute;
     right: 10px;
     bottom: 45px;
@@ -198,16 +189,16 @@ p.weather-temp {
     box-shadow: 0px 0px 10px rgb(66, 66, 66);
 }
 
-.todos {
+.todo {
     margin-bottom: 7px;
 }
 
-.todoitems {
+.todo--items {
     width: 300px;
     max-height: 80vh;
     overflow-y: auto;
     overflow-x: auto;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.98);
     position: absolute;
     left: 10px;
     bottom: 45px;
@@ -225,14 +216,14 @@ p.weather-temp {
     font-style: italic;
 }
 
-.todosform {
+.todo--form {
     display: flex;
     flex-direction: column;
     width: 280px;
     margin: 10px 0 0;
 }
 
-.todosinput {
+.todo--input {
     padding: 13px 10px 11px;
     margin: 1px 0 12px;
     margin-left: 4px;
@@ -247,7 +238,7 @@ p.weather-temp {
     font-weight: 700;
 }
 
-.linksinput {
+.links--input {
     padding: 13px 10px 11px;
     margin: 1px 0 12px;
     margin-left: 5px;
@@ -262,16 +253,16 @@ p.weather-temp {
     font-weight: 700;
 }
 
-.todosform input::placeholder {
+.todo--form input::placeholder {
     font-size: 1rem;
 }
 
-.todosform input:focus {
+.todo--form input:focus, .links--form input:focus {
     box-shadow: 0px 8px 10px -10px black;
     font-size: 1rem;
 }
 
-.todosubmit, .todoclear {
+.todo--submit, .todo--clear {
     padding: 11px 14px;
     width: 130px;
     text-align: center;
@@ -286,60 +277,60 @@ p.weather-temp {
     color: white;
 }
 
-.todoclear {
+.todo--clear {
     font-weight: 700;
 }
 
-.todosubmit {
+.todo--submit {
     margin-left: 4px;
     padding-top: 13px;
 }
 
-#todosubmit {
+#todo--submit {
     padding-top: 13px;
     padding-bottom: -1px;
 }
 
-#todoclear {
+#todo--clear {
     margin-left: 8px;
     padding-top: 11px;
 }
 
-#linksclear {
+#links--clear {
     padding-top: 12px;
 }
 
-#linksubmit {
+#links--submit {
     margin-left: 5px;
     padding-top: 14px;
 }
 
-.todobtns {
+.todo--btns {
     display: flex;
     margin-bottom: -2px;
 }
 
-.linkbtns {
+.links--btns {
     display: flex;
     margin-bottom: -10px;
 }
 
-.todosubmit:hover {
+.todo--submit:hover {
     background-color: #8c8b8b;
     text-shadow: 1px 1px 2px rgb(51 51 51), 0px 0px 5px #565656;
 }
 
-.todoclear:hover {
+.todo--clear:hover {
     background-color: #d60303;
 }
 
-.todostop {
+.todo--top {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.todoslabel {
+.todo--label {
     margin: 1px 2px 5px 3px;
     padding: 2px 0;
     font-weight: 700;
@@ -351,7 +342,7 @@ p.weather-temp {
     text-shadow: none;
 }
 
-.todoslabel {
+.todo--label {
     margin: 1px 2px 5px 3px;
     padding: 2px 0;
     font-weight: 700;
@@ -363,20 +354,20 @@ p.weather-temp {
     text-shadow: none;
 }
 
-#linkslabel {
+#links--label {
     padding-left: 2px;
     padding-right: 4px;
 }
 
-img.closetodos {
+img.close--todo {
     margin: -4px 2px 0 0;
 }
 
-img.closetodos {
+img.close--todo {
     cursor: pointer;
 }
 
-.closelinks {
+.close--links {
     margin-top: -7px;
     margin-right: 5px;
     margin-left: 2px;
@@ -392,11 +383,11 @@ img.closetodos {
     padding-right: 20px;
 }
 
-.todos li {
+.todo li {
     color: black;
 }
 
-.closebutton {
+.close--button {
     margin: 15px -10px 0 15px;
     cursor: pointer;
 }
@@ -407,7 +398,7 @@ ul {
     display: block;
 }
 
-.listul ul {
+.list--ul ul {
     margin-top: 5px;
 }
 
@@ -422,7 +413,7 @@ ul div img {
     cursor: pointer;
 }
 
-.linksul img {
+.links--ul img {
     margin-right: 2px;
 }
 
@@ -459,41 +450,41 @@ li a:hover {
     cursor: pointer;
 }
 
-.linksul div {
+.links--ul div {
     margin-top: 10px;
     margin-bottom: -10px;
 }
 
-.linkslist, .todolist {
+.links--list, .todo--list {
     font-size: 1.2rem;
     font-weight: 700;
 }
 
-.linkslist:hover, .todolist:hover {
+.links--list:hover, .todo--list:hover {
     cursor: pointer;
     color: rgb(247, 207, 4);
 }
 
-#imagesettings {
+#image--settings {
     cursor: pointer;
     height: 55px;
     margin-top: -5px;
     margin-left: 0px;
 }
 
-#linkscorner:hover, #todocorner:hover {
+#links--corner:hover, #todo--corner:hover {
     cursor: pointer;
 }
 
-#todoimage, #linksimage {
+#todo--image, #links--image {
     cursor: pointer;
 }
 
-.todocorner, .linkscorner {
+.todo--corner, .links--corner {
     display: flex;
 }
 
-.linkscorner img {
+.links--corner img {
     width: 60px;
     height: 60px;
     position: fixed;
@@ -501,7 +492,7 @@ li a:hover {
     bottom: -10px;
 }
 
-.todocorner img {
+.todo--corner img {
     width: 50px;
     height: 50px;
     position: fixed;
@@ -513,6 +504,15 @@ li a:hover {
     color: blue;
 }
 
+
+.quote--div {
+    display: block;
+}
+
+.quote--div p {
+    font-size: 1.4rem;
+    margin-top: -5px;
+}
 
 /* ************** MEDIA QUERIES ************** */
 
@@ -527,7 +527,7 @@ li a:hover {
         padding-top: 70px;
     }
 
-    .quotediv p {
+    .quote--div p {
         font-size: 1.1rem;
     }
 }
@@ -543,11 +543,11 @@ li a:hover {
         padding-top: 120px;
     }
 
-    .quotediv h2 {
+    .quote--div h2 {
         font-size: 1.5rem;
     }
 
-    .quotediv p {
+    .quote--div p {
         font-size: 1.2rem;
     }
 
@@ -567,11 +567,11 @@ li a:hover {
         padding-top: 90px;
     }
 
-    .quotediv h2 {
+    .quote--div h2 {
         font-size: 1.1rem;
     }
 
-    .quotediv p {
+    .quote--div p {
         font-size: 0.9rem;
     }
 
@@ -579,7 +579,7 @@ li a:hover {
         max-width: 80vw;
     }
 
-    .location, #location {
+    .image--location, #image--location {
         font-size: 0.6rem;
     }
 
@@ -587,18 +587,18 @@ li a:hover {
         width: 130px;
     }
 
-    #imagesettings {
+    #image--settings {
         width: 40px;
         margin-top: -17px;
         margin-left: -3px;
         margin-right: 10px;
     }
 
-    .photographer {
+    .image--photographer {
         display: none;
     }
 
-    .weather-city {
+    .weather--city {
         font-size: 1rem;
     }
 }

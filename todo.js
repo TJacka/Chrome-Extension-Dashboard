@@ -1,12 +1,12 @@
-document.getElementById("todoimage").addEventListener("click", () => todos.style.display = "flex")
-document.getElementById("todolist").addEventListener("click", () => todos.style.display = "flex")
-document.getElementById("closetodos").addEventListener("click", () => todos.style.display = "none")
-document.getElementById("todoclear").addEventListener("click", removeTodos)
+document.getElementById("todo--image").addEventListener("click", () => todos.style.display = "flex")
+document.getElementById("todo--list").addEventListener("click", () => todos.style.display = "flex")
+document.getElementById("close--todo").addEventListener("click", () => todos.style.display = "none")
+document.getElementById("todo--clear").addEventListener("click", removeTodos)
 
-const todos = document.getElementById("todoitems")
-const input = document.querySelector("#todosinput")
-const btn = document.querySelector("#todosubmit")
-const list = document.querySelector("#todoListItems")
+const todos = document.getElementById("todo--items")
+const input = document.querySelector("#todo--input")
+const btn = document.querySelector("#todo--submit")
+const list = document.querySelector("#todo--list--items")
 
 function addTodo(txt) {
     const liNode = document.createElement("div")
@@ -16,21 +16,21 @@ function addTodo(txt) {
     liImg.style.width = "20px"
     li.innerHTML = txt
     list.insertBefore(li, list.childNodes[0])
-    liImg.classList.add("closetodo")
-    liNode.classList.add("closealltodos")
+    liImg.classList.add("close--todo")
+    liNode.classList.add("close--all--todo")
     list.appendChild(liNode)
     liNode.appendChild(li)
     liNode.appendChild(liImg)
     liImg.addEventListener("click", (e) => {
       liNode.parentNode.removeChild(liNode)
       savedTasks = savedTasks.filter((e) => e !== txt)
-      localStorage.setItem("todos", JSON.stringify(savedTasks))
+      localStorage.setItem("todo", JSON.stringify(savedTasks))
     })
   }
 
   // Load saved tasks
   
-  let savedTasks = JSON.parse(localStorage.getItem("todos")) || [];
+  let savedTasks = JSON.parse(localStorage.getItem("todo")) || [];
   
   // Add UI elements for any saved task
   
@@ -43,7 +43,7 @@ function addTodo(txt) {
       alert("Please enter a todo!")
     } else {
       savedTasks.push(txt)
-      localStorage.setItem("todos", JSON.stringify(savedTasks))
+      localStorage.setItem("todo", JSON.stringify(savedTasks))
       input.value = ""
       addTodo(txt)
     }
@@ -51,12 +51,12 @@ function addTodo(txt) {
 
   // Removing items from todo list
 
-const close = document.getElementsByClassName("closealltodos")
+const close = document.getElementsByClassName("close--all--todo")
 function removeTodos() {
     for (let i = 0; i < close.length; i++) {
         close[i].style.display = "none"
     }
-    localStorage.removeItem("todos")
+    localStorage.removeItem("todo")
 }
 
 list.addEventListener('click', function(e) {
@@ -67,10 +67,10 @@ list.addEventListener('click', function(e) {
 
 // Make todos link hover on todos image hover
 
-document.getElementById("todocorner").addEventListener("mouseover", () => {
-    document.getElementById("todolist").style.color = "rgb(247, 207, 4)"
+document.getElementById("todo--corner").addEventListener("mouseover", () => {
+    document.getElementById("todo--list").style.color = "rgb(247, 207, 4)"
 })
 
-document.getElementById("todocorner").addEventListener("mouseout", () => {
-    document.getElementById("todolist").style.color = "white"
+document.getElementById("todo--corner").addEventListener("mouseout", () => {
+    document.getElementById("todo--list").style.color = "white"
 })

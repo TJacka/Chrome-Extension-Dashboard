@@ -1,12 +1,12 @@
-document.getElementById("closelinks").addEventListener("click", () => links.style.display = "none")
-document.getElementById("linkslist").addEventListener("click", () => links.style.display = "flex")
-document.getElementById("linksimage").addEventListener("click", () => links.style.display = "flex")
-document.getElementById("linksclear").addEventListener("click", removeLinks)
+document.getElementById("close--links").addEventListener("click", () => links.style.display = "none")
+document.getElementById("links--list").addEventListener("click", () => links.style.display = "flex")
+document.getElementById("links--image").addEventListener("click", () => links.style.display = "flex")
+document.getElementById("links--clear").addEventListener("click", removeLinks)
 
 const links = document.getElementById("links")
-const linksInput = document.querySelector("#linksinput")
-const linksBtn = document.querySelector("#linksubmit")
-const linksList = document.querySelector("#linkListItems")
+const linksInput = document.getElementById("links--input")
+const linksBtn = document.getElementById("links--submit")
+const linksList = document.getElementById("links--list--items")
 
 function addLink(txt) {
     const liNode = document.createElement("div")
@@ -16,8 +16,8 @@ function addLink(txt) {
     liImg.style.width = "20px"
     li.innerHTML = `<a href="https://${txt}" target="_blank">${txt}</a>`
     linksList.insertBefore(li, linksList.childNodes[0])
-    liImg.classList.add("closelink")
-    liNode.classList.add("closealllinks")
+    liImg.classList.add("close--links")
+    liNode.classList.add("close--all--links")
     linksList.appendChild(liNode)
     liNode.appendChild(li)
     liNode.appendChild(liImg)
@@ -51,7 +51,7 @@ function addLink(txt) {
 
   // Removing items from todo list
 
-const closeLink = document.getElementsByClassName("closealllinks")
+const closeLink = document.getElementsByClassName("close--all--links")
 function removeLinks() {
     for (let i = 0; i < closeLink.length; i++) {
         closeLink[i].style.display = "none"
@@ -61,10 +61,10 @@ function removeLinks() {
 
 // Make links link hover on todos image hover
 
-document.getElementById("linkscorner").addEventListener("mouseover", () => {
-    document.getElementById("linkslist").style.color = "rgb(247, 207, 4)"
+document.getElementById("links--corner").addEventListener("mouseover", () => {
+    document.getElementById("links--list").style.color = "rgb(247, 207, 4)"
 })
 
-document.getElementById("linkscorner").addEventListener("mouseout", () => {
-    document.getElementById("linkslist").style.color = "white"
+document.getElementById("links--corner").addEventListener("mouseout", () => {
+    document.getElementById("links--list").style.color = "white"
 })
